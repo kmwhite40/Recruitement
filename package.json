@@ -1,0 +1,30 @@
+{
+  "name": "scholarpath-athletics",
+  "version": "0.1.0",
+  "description": "ScholarPath Athletics — modern scholarship readiness platform for high school student-athletes.",
+  "private": true,
+  "type": "commonjs",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js",
+    "seed": "node server/seed.js",
+    "reset": "rm -f data/scholarpath.db && npm run seed",
+    "test": "node --test 'server/test/*.test.js'"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.92.0",
+    "bcryptjs": "^2.4.3",
+    "better-sqlite3": "^11.3.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "express-rate-limit": "^8.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.1.1",
+    "zod": "^4.4.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing & Plans — ScholarPath Athletics</title>
+  <meta name="description" content="Modern subscription plans for athletes, families, and student-loaders. Free Spark tier, Athlete Pro, Family Plan, and Student-Loader tiers for peers building profiles." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231E7A4D'/%3E%3Cpath d='M9 22L14 14L18 17L23 9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="index.html#how">How It Works</a></li>
+      <li><a href="subscription.html">Pricing</a></li>
+      <li><a href="athlete-dashboard.html">Athletes</a></li>
+      <li><a href="recruiter-portal.html">Recruiters</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="#">Sign in</a>
+      <a class="btn btn-primary btn-sm" href="#choose">Get Started</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" style="padding-bottom:3rem;">
+  <div class="container text-center">
+    <span class="eyebrow fade-up" style="justify-content:center;">Plans &amp; Pricing</span>
+    <h1 class="fade-up d1">Pick the plan<br/>that fits the path.</h1>
+    <p class="lead fade-up d2" style="margin:1.5rem auto 2rem;">Free for any athlete. Pro features for serious recruits. Family coverage for households with multiple athletes. And a Student Loader tier for teammates and friends helping each other build profiles.</p>
+
+    <div class="role-pills fade-up d3" id="choose">
+      <button class="role-pill active">I'm an athlete</button>
+      <button class="role-pill">I'm a parent</button>
+      <button class="role-pill">I'm helping teammates</button>
+      <button class="role-pill">I'm a coach</button>
+    </div>
+
+    <div class="billing-toggle fade-up d4" role="tablist">
+      <button class="active" data-mode="monthly">Monthly</button>
+      <button data-mode="annual">Annual <span class="save">Save 20%</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- CORE PLANS -->
+<section style="padding-bottom:4rem;">
+  <div class="container">
+    <div class="pricing-grid">
+      <!-- Spark -->
+      <div class="plan" data-animate>
+        <div class="plan-name">Spark</div>
+        <div class="plan-tag">Free, forever. Every athlete deserves a starting line.</div>
+        <div class="plan-price"><span class="amt">$0</span><span class="per">/ mo</span></div>
+        <div class="plan-annual">No card required</div>
+        <ul class="plan-features">
+          <li>Full athlete profile</li>
+          <li>Eligibility status (NCAA / NAIA / JUCO)</li>
+          <li>Up to 3 highlight uploads</li>
+          <li>Recruiter visibility (basic)</li>
+          <li>Parent &amp; coach connections</li>
+          <li>Mobile app access</li>
+        </ul>
+        <a class="btn btn-secondary btn-full" href="#">Start free</a>
+      </div>
+
+      <!-- Athlete Pro -->
+      <div class="plan plan-popular" data-animate>
+        <div class="plan-name">Athlete Pro</div>
+        <div class="plan-tag">For active recruits with serious goals.</div>
+        <div class="plan-price"><span class="amt" data-amount-monthly="$24" data-amount-annual="$19">$24</span><span class="per">/ mo</span></div>
+        <div class="plan-annual">$229 billed annually</div>
+        <ul class="plan-features">
+          <li>Everything in Spark</li>
+          <li>AI highlight builder &amp; auto-tagging</li>
+          <li>AI college matching (Reach / Target / Likely)</li>
+          <li>Coach outreach toolkit + AI drafts</li>
+          <li>Voice interview practice</li>
+          <li>Verified Stats Dashboard</li>
+          <li>Priority recruiter visibility</li>
+          <li>Concierge onboarding (15 min)</li>
+        </ul>
+        <a class="btn btn-primary btn-full" href="#checkout">Get Athlete Pro</a>
+      </div>
+
+      <!-- Family Plan -->
+      <div class="plan" data-animate>
+        <div class="plan-name">Family Plan</div>
+        <div class="plan-tag">Up to 4 sibling athletes on one subscription.</div>
+        <div class="plan-price"><span class="amt" data-amount-monthly="$34" data-amount-annual="$28">$34</span><span class="per">/ mo</span></div>
+        <div class="plan-annual">$329 billed annually</div>
+        <ul class="plan-features">
+          <li>4 Athlete Pro seats</li>
+          <li>Unified parent dashboard</li>
+          <li>Financial aid &amp; FAFSA suite</li>
+          <li>Cost-comparison &amp; offer tools</li>
+          <li>Multi-athlete calendar</li>
+          <li>Scam protection alerts</li>
+          <li>Premium support</li>
+        </ul>
+        <a class="btn btn-secondary btn-full" href="#checkout">Choose Family</a>
+      </div>
+
+      <!-- Loader -->
+      <div class="plan" data-animate>
+        <div class="plan-name">Student Loader</div>
+        <div class="plan-tag">Help teammates load profiles. Athlete-owned, consent-required.</div>
+        <div class="plan-price"><span class="amt" data-amount-monthly="$9" data-amount-annual="$7">$9</span><span class="per">/ mo</span></div>
+        <div class="plan-annual">From $89 / yr (Teammate)</div>
+        <ul class="plan-features">
+          <li>Build profiles for friends, siblings, peers</li>
+          <li>Athlete + parent consent required</li>
+          <li>Three tiers: 3 / 10 / 25 athletes</li>
+          <li>Full activity log visible to athlete</li>
+          <li>Athlete owns the profile permanently</li>
+          <li>No outreach access (athlete-only)</li>
+        </ul>
+        <a class="btn btn-secondary btn-full" href="#loader">See loader tiers</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOADER DEEP DIVE -->
+<section class="section" id="loader">
+  <div class="container">
+    <div class="loader-banner" data-animate>
+      <div>
+        <span class="eyebrow" style="color:var(--purple-500);">New &amp; modern</span>
+        <h2 class="mt-2">The Student Loader subscription.</h2>
+        <p class="text-dim mt-2">Some athletes don't have time, tech access, or family support to build their own profile. Now their teammate, sibling, or sports-media classmate can help — with built-in safeguards.</p>
+        <ul style="list-style:none; padding:0; margin-top:1.25rem;">
+          <li style="padding:0.4rem 0; color:var(--text-dim);"><span class="badge badge-purple" style="margin-right:0.5rem;">✓</span> Verified consent before any profile goes live</li>
+          <li style="padding:0.4rem 0; color:var(--text-dim);"><span class="badge badge-purple" style="margin-right:0.5rem;">✓</span> Loaders cannot send outreach — athlete-only</li>
+          <li style="padding:0.4rem 0; color:var(--text-dim);"><span class="badge badge-purple" style="margin-right:0.5rem;">✓</span> Athlete can revoke loader access anytime</li>
+          <li style="padding:0.4rem 0; color:var(--text-dim);"><span class="badge badge-purple" style="margin-right:0.5rem;">✓</span> Coach &amp; parent visibility into all loader actions</li>
+        </ul>
+      </div>
+
+      <div class="card card-elevated">
+        <h4 style="margin-bottom:1rem;">Loader tiers</h4>
+        <div style="display:flex; flex-direction:column; gap:0.6rem;">
+          <div style="display:flex; justify-content:space-between; padding:0.85rem 1rem; border:1px solid var(--border); border-radius:var(--radius);">
+            <div>
+              <div style="font-weight:600;">Teammate</div>
+              <div style="font-size:0.85rem; color:var(--text-dim);">Up to 3 athletes</div>
+            </div>
+            <div class="mono" style="font-weight:700;">$9 / mo</div>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:0.85rem 1rem; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface-2);">
+            <div>
+              <div style="font-weight:600;">Team Manager</div>
+              <div style="font-size:0.85rem; color:var(--text-dim);">Up to 10 athletes</div>
+            </div>
+            <div class="mono" style="font-weight:700;">$19 / mo</div>
+          </div>
+          <div style="display:flex; justify-content:space-between; padding:0.85rem 1rem; border:1px solid rgba(139,92,246,0.4); border-radius:var(--radius); background:rgba(139,92,246,0.06);">
+            <div>
+              <div style="font-weight:600;">Student Ambassador</div>
+              <div style="font-size:0.85rem; color:var(--text-dim);">Up to 25 athletes</div>
+            </div>
+            <div class="mono" style="font-weight:700;">$29 / mo</div>
+          </div>
+        </div>
+        <a class="btn btn-primary btn-full mt-3" href="#checkout">Become a Loader</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARE TABLE -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Compare</span>
+      <h2>What's in each plan.</h2>
+    </div>
+
+    <div class="card" style="overflow-x:auto;">
+      <table style="width:100%; border-collapse:collapse; min-width:720px;">
+        <thead>
+          <tr>
+            <th style="text-align:left; padding:1rem; color:var(--text-dim); font-size:0.85rem; letter-spacing:0.06em; text-transform:uppercase;">Feature</th>
+            <th style="text-align:center; padding:1rem; font-weight:700;">Spark</th>
+            <th style="text-align:center; padding:1rem; font-weight:700; color:var(--green-500);">Pro</th>
+            <th style="text-align:center; padding:1rem; font-weight:700;">Family</th>
+            <th style="text-align:center; padding:1rem; font-weight:700;">Loader</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.9rem 1rem;">Athlete profile</td><td style="text-align:center;">✓</td><td style="text-align:center; color:var(--green-500);">✓</td><td style="text-align:center;">✓ × 4</td><td style="text-align:center;">— for others</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.9rem 1rem;">Eligibility tracker</td><td style="text-align:center;">Basic</td><td style="text-align:center; color:var(--green-500);">Predictive</td><td style="text-align:center;">Predictive</td><td style="text-align:center;">View-only</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.9rem 1rem;">Highlight uploads</td><td style="text-align:center;">3</td><td style="text-align:center; color:var(--green-500);">Unlimited</td><td style="text-align:center;">Unlimited</td><td style="text-align:center;">Per athlete</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.9rem 1rem;">AI highlight builder</td><td style="text-align:center; color:var(--text-muted);">—</td><td style="text-align:center; color:var(--green-500);">✓</td><td style="text-align:center;">✓</td><td style="text-align:center;">✓</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.9rem 1rem;">AI college matching</td><td style="text-align:center; color:var(--text-muted);">—</td><td style="text-align:center; color:var(--green-500);">✓</td><td style="text-align:center;">✓</td><td style="text-align:center; color:var(--text-muted);">—</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.9rem 1rem;">Coach outreach toolkit</td><td style="text-align:center; color:var(--text-muted);">—</td><td style="text-align:center; color:var(--green-500);">✓</td><td style="text-align:center;">✓</td><td style="text-align:center; color:var(--text-muted);">— (athlete only)</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.9rem 1rem;">Voice interview practice</td><td style="text-align:center; color:var(--text-muted);">—</td><td style="text-align:center; color:var(--green-500);">✓</td><td style="text-align:center;">✓</td><td style="text-align:center; color:var(--text-muted);">—</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.9rem 1rem;">Financial aid &amp; FAFSA suite</td><td style="text-align:center; color:var(--text-muted);">—</td><td style="text-align:center; color:var(--green-500);">Basic</td><td style="text-align:center;">Full</td><td style="text-align:center; color:var(--text-muted);">—</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.9rem 1rem;">Multi-athlete dashboard</td><td style="text-align:center; color:var(--text-muted);">—</td><td style="text-align:center; color:var(--text-muted);">—</td><td style="text-align:center;">✓</td><td style="text-align:center;">✓</td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.9rem 1rem;">Premium support</td><td style="text-align:center; color:var(--text-muted);">—</td><td style="text-align:center; color:var(--green-500);">Email</td><td style="text-align:center;">Email + chat</td><td style="text-align:center;">Email</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CHECKOUT MOCK -->
+<section class="section" id="checkout">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Modern checkout</span>
+      <h2>From sign-up to recruiting-ready in one screen.</h2>
+      <p>Apple Pay, Google Pay, card, school voucher, or scholarship code — pause anytime, cancel anytime, no dark patterns.</p>
+    </div>
+
+    <div class="grid grid-2" style="gap:2rem; max-width:980px; margin:0 auto;">
+      <div class="card card-elevated" data-animate>
+        <h3 style="font-size:1.1rem; margin-bottom:1rem;">Order summary</h3>
+        <div class="checkout-mock">
+          <div class="row"><span>Athlete Pro · Annual</span><span class="mono">$229.00</span></div>
+          <div class="row"><span>14-day free trial</span><span style="color:var(--green-500);">−$0.00</span></div>
+          <div class="row"><span>Equity Access Code</span><a href="#" style="color:var(--green-500); font-size:0.85rem;">Apply</a></div>
+          <div class="row total"><span>Total today</span><span class="mono">$0.00</span></div>
+          <div style="font-size:0.78rem; color:var(--text-muted); margin-top:0.5rem;">Charged $229.00 on day 15. Cancel anytime in one tap.</div>
+
+          <div class="pay-row">
+            <button class="pay-btn dark"> Pay</button>
+            <button class="pay-btn"><span style="color:#5B8DEF;">G</span> Pay</button>
+            <button class="pay-btn">Card</button>
+          </div>
+          <button class="btn btn-primary btn-full mt-3">Start free 14-day trial</button>
+          <div style="font-size:0.78rem; color:var(--text-muted); text-align:center; margin-top:0.75rem;">By starting your trial you agree to our Terms and Privacy Policy.</div>
+        </div>
+      </div>
+
+      <div data-animate>
+        <h3 style="font-size:1.1rem; margin-bottom:1rem;">Why families choose this flow</h3>
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+          <div class="card" style="padding:1.1rem 1.25rem;">
+            <div style="display:flex; gap:0.8rem; align-items:flex-start;">
+              <div class="feature-icon" style="margin:0; flex-shrink:0; width:36px; height:36px;">14</div>
+              <div>
+                <h4>14-day free trial</h4>
+                <p class="text-dim" style="font-size:0.9rem;">Full features. No card required if your school is verified.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="padding:1.1rem 1.25rem;">
+            <div style="display:flex; gap:0.8rem; align-items:flex-start;">
+              <div class="feature-icon blue" style="margin:0; flex-shrink:0; width:36px; height:36px;">⏸</div>
+              <div>
+                <h4>Pause anytime</h4>
+                <p class="text-dim" style="font-size:0.9rem;">Off-season? Pause your subscription with one tap. Resume when training picks up.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="padding:1.1rem 1.25rem;">
+            <div style="display:flex; gap:0.8rem; align-items:flex-start;">
+              <div class="feature-icon amber" style="margin:0; flex-shrink:0; width:36px; height:36px;">$</div>
+              <div>
+                <h4>Equity access codes</h4>
+                <p class="text-dim" style="font-size:0.9rem;">Schools and nonprofits issue codes for free or discounted access. Real talent shouldn't need a credit card.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="padding:1.1rem 1.25rem;">
+            <div style="display:flex; gap:0.8rem; align-items:flex-start;">
+              <div class="feature-icon purple" style="margin:0; flex-shrink:0; width:36px; height:36px;">↺</div>
+              <div>
+                <h4>One-tap cancel</h4>
+                <p class="text-dim" style="font-size:0.9rem;">No retention dark patterns. We earn your subscription every month.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOOL / ORG LICENSING -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner">
+      <span class="eyebrow" style="justify-content:center;">For schools, clubs, and athletic departments</span>
+      <h2 class="mt-2">Bring ScholarPath to your whole program.</h2>
+      <p>School subscriptions, club licenses, recruiter seats, and white-label deployments — built around your roster, your coaches, and your AD reporting needs.</p>
+      <div style="display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
+        <a class="btn btn-primary btn-lg" href="#">Talk to our team</a>
+        <a class="btn btn-secondary btn-lg" href="#">Download program guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">FAQ</span>
+      <h2>Common questions.</h2>
+    </div>
+
+    <div class="grid grid-2" style="max-width:920px; margin:0 auto;">
+      <div class="card"><h4 style="margin-bottom:0.5rem;">Will my athlete get a scholarship?</h4><p class="text-dim" style="font-size:0.92rem;">No platform can promise that. ScholarPath is built around the five things that put a scholarship within reach: preparation, exposure, eligibility, character, and college fit.</p></div>
+      <div class="card"><h4 style="margin-bottom:0.5rem;">What if we can't afford the subscription?</h4><p class="text-dim" style="font-size:0.92rem;">Spark is free forever, and Equity Access Codes from sponsors and nonprofits unlock paid features for athletes who qualify.</p></div>
+      <div class="card"><h4 style="margin-bottom:0.5rem;">Is my child's data safe?</h4><p class="text-dim" style="font-size:0.92rem;">Parental consent is required for under-18 athletes. We're SOC 2-aligned, FERPA-aligned, COPPA-compliant, and recruiters are identity-verified before access.</p></div>
+      <div class="card"><h4 style="margin-bottom:0.5rem;">How does Student Loader work?</h4><p class="text-dim" style="font-size:0.92rem;">Friends or siblings can build a profile for an athlete only after verified consent from the athlete and a parent. Loaders can never message college coaches — that stays athlete-only.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath Athletics</span></a>
+        <p class="text-dim mt-2" style="font-size:0.9rem; max-width:36ch;">Built to be Recruited. Built to be Ready.</p>
+      </div>
+      <div><h4>Product</h4><ul><li><a href="athlete-dashboard.html">Athlete Dashboard</a></li><li><a href="athlete-profile.html">Profile</a></li><li><a href="eligibility-tracker.html">Eligibility</a></li><li><a href="recruiter-portal.html">Recruiter Portal</a></li><li><a href="subscription.html">Pricing</a></li></ul></div>
+      <div><h4>For</h4><ul><li><a href="#">Athletes</a></li><li><a href="#">Parents</a></li><li><a href="#">Coaches</a></li><li><a href="#">Recruiters</a></li><li><a href="#">Athletic Directors</a></li></ul></div>
+      <div><h4>Resources</h4><ul><li><a href="#">NCAA Eligibility 101</a></li><li><a href="#">FAFSA Guide</a></li><li><a href="#">NIL Education</a></li><li><a href="#">Recruiting Calendar</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Trust &amp; Safety</a></li><li><a href="#">Privacy</a></li><li><a href="#">Terms</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div>© <span data-year>2026</span> ScholarPath Athletics.</div><div>SOC 2 · FERPA · COPPA</div></div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="data-loader.js"></script>
+</body>
+</html>

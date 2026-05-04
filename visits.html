@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visit Planner — ScholarPath Athletics</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+    <ul class="nav-links">
+      <li><a href="athlete-dashboard.html">Dashboard</a></li>
+      <li><a href="pipeline.html">Pipeline</a></li>
+      <li><a href="coach-directory.html">Coaches</a></li>
+      <li><a href="camps.html">Camps</a></li>
+      <li><a href="visits.html">Visits</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container" style="padding:2rem 1.5rem 4rem; max-width:1100px;">
+  <div class="app-topbar">
+    <div>
+      <h1>Visit Planner</h1>
+      <p class="text-dim mt-1">Track unofficial and official visits in one place. Build itineraries, log travel notes, and capture takeaways the day-of.</p>
+    </div>
+    <button id="addVisit" class="btn btn-primary btn-sm">+ Plan visit</button>
+  </div>
+
+  <div class="stat-row mb-4" id="summary">
+    <div class="stat-tile"><div class="lbl">Upcoming</div><div class="val mono" id="cntUpcoming">—</div></div>
+    <div class="stat-tile"><div class="lbl">Unofficial</div><div class="val mono" id="cntUnofficial">—</div></div>
+    <div class="stat-tile"><div class="lbl">Official</div><div class="val mono" id="cntOfficial" style="color:var(--green-500);">—</div></div>
+    <div class="stat-tile"><div class="lbl">Completed</div><div class="val mono" id="cntCompleted" style="color:var(--text-dim);">—</div></div>
+  </div>
+
+  <div class="tabs" data-tabs>
+    <button class="tab active" data-target="upcoming">Upcoming</button>
+    <button class="tab" data-target="completed">Completed</button>
+  </div>
+
+  <div data-panel="upcoming" id="upcomingList" style="display:flex; flex-direction:column; gap:1rem;"></div>
+  <div data-panel="completed" id="completedList" class="hidden" style="display:flex; flex-direction:column; gap:1rem;"></div>
+
+  <div class="card mt-4" style="background:rgba(244,163,0,0.06); border-color:rgba(244,163,0,0.3);">
+    <h4 style="font-size:0.85rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--amber-500); margin-bottom:0.5rem;">Compliance reminder</h4>
+    <p class="text-dim" style="font-size:0.9rem;">Official visits are limited per division — D-I athletes can take 5 official visits beginning August 1 of junior year. Unofficial visits have no limit but are athlete-funded. Always log every visit here for your athletic department records.</p>
+  </div>
+</main>
+
+<script src="app.js"></script>
+<script>
+const ATHLETE_ID = 1;
+const today = new Date().toISOString().slice(0, 10);
+
+function fmtDate(s) {
+  if (!s) return '';
+  const d = new Date(s + 'T00:00:00');
+  return d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+}
+function daysFrom(s) {
+  const d = new Date(s + 'T00:00:00');
+  return Math.round((d - new Date()) / 86400000);
+}
+
+function visitCard(v) {
+  const days = daysFrom(v.visit_date);
+  const isPast = v.status === 'completed' || days < 0;
+  return `
+    <article class="card" style="display:grid; grid-template-columns:80px 1fr auto; gap:1.25rem; align-items:flex-start;">
+      <div style="text-align:center; padding:0.4rem; background:${isPast ? 'var(--surface-2)' : 'rgba(43,182,115,0.1)'}; border-radius:var(--radius); border:1px solid ${isPast ? 'var(--border)' : 'rgba(43,182,115,0.3)'};">
+        <div style="font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted);">${new Date(v.visit_date + 'T00:00:00').toLocaleDateString(undefined, { month: 'short' })}</div>
+        <div style="font-size:1.6rem; font-weight:800; line-height:1; margin-top:0.2rem;">${new Date(v.visit_date + 'T00:00:00').getDate()}</div>
+        <div style="font-size:0.7rem; color:var(--text-dim);">${new Date(v.visit_date + 'T00:00:00').getFullYear()}</div>
+      </div>
+      <div>
+        <div class="flex-between" style="margin-bottom:0.4rem;">
+          <div>
+            <div style="font-weight:700; font-size:1.05rem;">${v.school_name}</div>
+            <div class="text-dim" style="font-size:0.85rem;">${fmtDate(v.visit_date)}${days >= 0 ? ` · in ${days} day${days === 1 ? '' : 's'}` : ''}</div>
+          </div>
+          <div style="display:flex; gap:0.4rem;">
+            <span class="badge ${v.type === 'official' ? 'badge-verified' : 'badge-blue'}">${v.type === 'official' ? 'Official' : 'Unofficial'}</span>
+            <span class="badge ${v.status === 'confirmed' ? 'badge-verified' : v.status === 'completed' ? '' : v.status === 'canceled' ? 'badge-red' : 'badge-amber'}">${v.status}</span>
+          </div>
+        </div>
+        ${v.itinerary ? `<div style="font-size:0.9rem; color:var(--text-dim); padding:0.75rem; background:var(--surface-2); border-radius:var(--radius); margin-top:0.5rem;"><strong style="color:var(--text);">Itinerary:</strong> ${v.itinerary}</div>` : ''}
+        ${v.travel_notes ? `<div style="font-size:0.85rem; color:var(--text-muted); margin-top:0.5rem;">📍 ${v.travel_notes}</div>` : ''}
+        ${v.outcome_notes ? `<div style="font-size:0.85rem; color:var(--text-dim); margin-top:0.5rem; padding:0.6rem; background:rgba(43,182,115,0.06); border-left:3px solid var(--green-500); border-radius:6px;"><strong style="color:var(--green-500);">Takeaway:</strong> ${v.outcome_notes}</div>` : ''}
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0.4rem;">
+        ${!isPast ? `<button class="btn btn-secondary btn-sm" data-complete="${v.id}">Mark complete</button>` : ''}
+        <button class="btn btn-ghost btn-sm" data-delete="${v.id}" style="color:var(--red-500);">Remove</button>
+      </div>
+    </article>
+  `;
+}
+
+async function load() {
+  try {
+    const r = await fetch(`/api/visits/${ATHLETE_ID}`);
+    const data = await r.json();
+    const visits = data.visits || [];
+    const upcoming = visits.filter(v => v.status !== 'completed' && v.status !== 'canceled');
+    const completed = visits.filter(v => v.status === 'completed' || v.status === 'canceled');
+
+    document.getElementById('cntUpcoming').textContent = upcoming.length;
+    document.getElementById('cntUnofficial').textContent = visits.filter(v => v.type === 'unofficial').length;
+    document.getElementById('cntOfficial').textContent = visits.filter(v => v.type === 'official').length;
+    document.getElementById('cntCompleted').textContent = completed.length;
+
+    document.getElementById('upcomingList').innerHTML = upcoming.length ? upcoming.map(visitCard).join('') : '<div class="card text-dim text-center">No visits planned. Click "Plan visit" to add one.</div>';
+    document.getElementById('completedList').innerHTML = completed.length ? completed.map(visitCard).join('') : '<div class="card text-dim text-center">No completed visits yet.</div>';
+
+    document.querySelectorAll('[data-complete]').forEach(btn => btn.addEventListener('click', () => updateVisit(btn.dataset.complete, { status: 'completed' })));
+    document.querySelectorAll('[data-delete]').forEach(btn => btn.addEventListener('click', () => deleteVisit(btn.dataset.delete)));
+  } catch (e) {
+    document.getElementById('upcomingList').innerHTML = '<div class="card text-dim">Could not load visits.</div>';
+  }
+}
+
+async function updateVisit(id, patch) {
+  try {
+    await fetch(`/api/visits/${ATHLETE_ID}/${id}`, {
+      method: 'PATCH', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(patch),
+    });
+    load();
+  } catch (_) { alert('Sign in to update'); }
+}
+
+async function deleteVisit(id) {
+  if (!confirm('Remove this visit?')) return;
+  try {
+    await fetch(`/api/visits/${ATHLETE_ID}/${id}`, { method: 'DELETE', credentials: 'include' });
+    load();
+  } catch (_) {}
+}
+
+document.getElementById('addVisit').addEventListener('click', async () => {
+  const school = prompt('School name?');
+  if (!school) return;
+  const date = prompt('Visit date (YYYY-MM-DD)?', '2026-09-15');
+  const type = prompt('Type? (unofficial / official)', 'unofficial');
+  if (!['unofficial','official'].includes(type)) return alert('Type must be "unofficial" or "official"');
+  try {
+    await fetch(`/api/visits/${ATHLETE_ID}`, {
+      method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ school_name: school, visit_date: date, type, status: 'planned' }),
+    });
+    load();
+  } catch (_) { alert('Sign in to add visits'); }
+});
+
+load();
+</script>
+
+active<activenactiveaactivevactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activenactiveaactivevactive"active>active<activedactiveiactivevactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activenactiveaactivevactive-activeiactivenactivenactiveeactiveractive"active>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeDactiveAactiveSactiveHactive"active activehactiveractiveeactivefactive=active"activeaactivetactivehactivelactiveeactivetactiveeactive-activedactiveaactivesactivehactivebactiveoactiveaactiveractivedactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active⌂active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeHactiveoactivemactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activePactiveIactivePactiveEactive"active activehactiveractiveeactivefactive=active"activepactiveiactivepactiveeactivelactiveiactivenactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active▦active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activePactiveiactivepactiveeactivelactiveiactivenactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeIactiveNactiveTactive"active activehactiveractiveeactivefactive=active"activeiactivenactivetactiveeactiveractivevactiveiactiveeactivewactive-activepactiveractiveaactivecactivetactiveiactivecactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active🎙active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeIactivenactivetactiveeactiveractivevactiveiactiveeactivewactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeTactiveIactiveMactiveEactive"active activehactiveractiveeactivefactive=active"activetactiveiactivemactiveeactivelactiveiactivenactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active🗺active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeTactiveiactivemactiveeactivelactiveiactivenactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activePactiveRactiveOactiveFactive"active activehactiveractiveeactivefactive=active"activeaactivetactivehactivelactiveeactivetactiveeactive-activepactiveractiveoactivefactiveiactivelactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active●active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activePactiveractiveoactivefactiveiactivelactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<active/activedactiveiactivevactive>active<active/activenactiveaactivevactive>
+</body>
+</html>

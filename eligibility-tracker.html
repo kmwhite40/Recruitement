@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Eligibility Tracker — ScholarPath Athletics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231E7A4D'/%3E%3Cpath d='M9 22L14 14L18 17L23 9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+    <ul class="nav-links">
+      <li><a href="athlete-dashboard.html">Dashboard</a></li>
+      <li><a href="athlete-profile.html">Profile</a></li>
+      <li><a href="eligibility-tracker.html">Eligibility</a></li>
+      <li><a href="recruiter-portal.html">Recruiters</a></li>
+      <li><a href="subscription.html">Plans</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-secondary btn-sm" href="#">Maya R. ▾</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main class="container" style="padding-top:2rem; padding-bottom:4rem;">
+  <div class="app-topbar">
+    <div>
+      <h1>Academic Eligibility</h1>
+      <p class="text-dim mt-1">Real-time NCAA, NAIA, and JUCO core-course tracking. We catch problems while they're still fixable.</p>
+    </div>
+    <div style="display:flex; gap:0.6rem;">
+      <button class="btn btn-secondary btn-sm">Send to counselor</button>
+      <button class="btn btn-primary btn-sm">Download report</button>
+    </div>
+  </div>
+
+  <!-- STOPLIGHT BANNER -->
+  <div class="elig-banner">
+    <div class="stoplight">
+      <div class="l on-green"></div>
+      <div class="l"></div>
+      <div class="l"></div>
+    </div>
+    <div style="flex:1;">
+      <h3>You're on pace.</h3>
+      <p>14 of 16 NCAA core courses complete. Keep current grades through May and you stay green for D-I, D-II, and NAIA. One sentence to share with college coaches: <em>"Academically on track for all divisions."</em></p>
+    </div>
+    <div style="text-align:right; min-width:120px;">
+      <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:700; letter-spacing:-0.02em;">3.74</div>
+      <div style="color:var(--text-dim); font-size:0.82rem;">Cumulative GPA</div>
+    </div>
+  </div>
+
+  <!-- SUMMARY TILES -->
+  <div class="stat-row mb-4">
+    <div class="stat-tile">
+      <div class="lbl">Core complete</div>
+      <div class="val">14<span style="color:var(--text-dim); font-size:1rem; font-weight:500;"> / 16</span></div>
+      <div class="delta">+1 this term</div>
+    </div>
+    <div class="stat-tile">
+      <div class="lbl">Cumulative GPA</div>
+      <div class="val">3.74</div>
+      <div class="delta">+0.06 vs last term</div>
+    </div>
+    <div class="stat-tile">
+      <div class="lbl">Forecast year-end</div>
+      <div class="val">3.78</div>
+      <div class="delta" style="color:var(--green-500);">Above D-I floor</div>
+    </div>
+    <div class="stat-tile">
+      <div class="lbl">Days to deadline</div>
+      <div class="val">42</div>
+      <div class="delta" style="color:var(--text-dim);">NCAA Eligibility Center final transcript</div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs" data-tabs>
+    <button class="tab active" data-target="ncaa">NCAA D-I / D-II</button>
+    <button class="tab" data-target="naia">NAIA</button>
+    <button class="tab" data-target="juco">JUCO Pathway</button>
+    <button class="tab" data-target="grad">Graduation</button>
+  </div>
+
+  <!-- CORE COURSE TABLE -->
+  <div data-panel="ncaa">
+    <h3 style="margin-bottom:1rem; font-size:1.1rem;">NCAA Core Course Matrix</h3>
+    <div style="overflow-x:auto;">
+      <table class="core-table">
+        <thead>
+          <tr>
+            <th>Core Area</th>
+            <th>9th</th>
+            <th>10th</th>
+            <th>11th</th>
+            <th>12th</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="font-weight:600;">English (4 required)</td>
+            <td>English I <span class="grade grade-a">A</span></td>
+            <td>English II <span class="grade grade-a">A−</span></td>
+            <td>American Lit <span class="grade grade-b">B+</span></td>
+            <td>AP English <span style="color:var(--text-muted); font-size:0.85rem;">enrolled</span></td>
+            <td><span class="badge badge-verified">On Pace</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">Math (3 required)</td>
+            <td>Algebra I <span class="grade grade-a">A</span></td>
+            <td>Geometry <span class="grade grade-b">B+</span></td>
+            <td>Algebra II <span class="grade grade-c">C+</span></td>
+            <td><span style="color:var(--text-muted); font-size:0.85rem;">—</span></td>
+            <td><span class="badge badge-amber">Watch</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">Science (2 required)</td>
+            <td>Biology <span class="grade grade-a">A</span></td>
+            <td>Chemistry <span class="grade grade-b">B+</span></td>
+            <td>Physics <span class="grade grade-a">A−</span></td>
+            <td><span style="color:var(--text-muted); font-size:0.85rem;">—</span></td>
+            <td><span class="badge badge-verified">Complete</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">Social Science (2 required)</td>
+            <td>World History <span class="grade grade-a">A</span></td>
+            <td>US History <span class="grade grade-a">A</span></td>
+            <td><span style="color:var(--text-muted); font-size:0.85rem;">—</span></td>
+            <td>Govt + Econ <span style="color:var(--text-muted); font-size:0.85rem;">enrolled</span></td>
+            <td><span class="badge badge-verified">On Pace</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">Foreign / Religion / Phil (1)</td>
+            <td>Spanish I <span class="grade grade-a">A</span></td>
+            <td>Spanish II <span class="grade grade-a">A−</span></td>
+            <td><span style="color:var(--text-muted); font-size:0.85rem;">—</span></td>
+            <td><span style="color:var(--text-muted); font-size:0.85rem;">—</span></td>
+            <td><span class="badge badge-verified">Complete</span></td>
+          </tr>
+          <tr>
+            <td style="font-weight:600;">Additional Core (4)</td>
+            <td><span style="color:var(--text-muted); font-size:0.85rem;">—</span></td>
+            <td>Pre-Calc <span class="grade grade-b">B</span></td>
+            <td>Psychology <span class="grade grade-a">A</span></td>
+            <td>AP Stats <span style="color:var(--text-muted); font-size:0.85rem;">enrolled</span></td>
+            <td><span class="badge badge-verified">On Pace</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ATTENTION BLOCK -->
+    <div class="elig-banner warn mt-4">
+      <div class="stoplight">
+        <div class="l"></div>
+        <div class="l on-amber"></div>
+        <div class="l"></div>
+      </div>
+      <div style="flex:1;">
+        <h3>One area to watch: Algebra II</h3>
+        <p>Your current C+ won't drop you below the NCAA core-GPA floor, but it pulls your projection down. A B− or better on the final exam keeps you safely above 3.5 core. Your tutor program covers this — book a session below.</p>
+        <div style="display:flex; gap:0.6rem; margin-top:1rem;">
+          <button class="btn btn-primary btn-sm">Book tutor session</button>
+          <button class="btn btn-secondary btn-sm">Email Mr. Hampton</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TWO-COL: Eligibility Center + Forecast -->
+    <div class="grid grid-2 mt-4">
+      <div class="card">
+        <h3 style="font-size:1.05rem; margin-bottom:1rem;">Eligibility Center status</h3>
+        <ul style="list-style:none; padding:0;">
+          <li style="display:flex; justify-content:space-between; padding:0.7rem 0; border-bottom:1px solid var(--border);"><span class="text-dim">Account registered</span><span class="badge badge-verified">✓ Done</span></li>
+          <li style="display:flex; justify-content:space-between; padding:0.7rem 0; border-bottom:1px solid var(--border);"><span class="text-dim">Amateurism questionnaire</span><span class="badge badge-verified">✓ Done</span></li>
+          <li style="display:flex; justify-content:space-between; padding:0.7rem 0; border-bottom:1px solid var(--border);"><span class="text-dim">9–11th grade transcript on file</span><span class="badge badge-verified">✓ Submitted</span></li>
+          <li style="display:flex; justify-content:space-between; padding:0.7rem 0; border-bottom:1px solid var(--border);"><span class="text-dim">Final transcript</span><span class="badge badge-amber">⏳ Due Jul 15</span></li>
+          <li style="display:flex; justify-content:space-between; padding:0.7rem 0;"><span class="text-dim">Test scores (optional)</span><span class="badge">○ Optional</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:1.05rem; margin-bottom:1rem;">GPA forecast</h3>
+        <p class="text-dim mb-3" style="font-size:0.9rem;">Predictive modeling on your remaining terms vs. division minimums.</p>
+        <div style="display:flex; flex-direction:column; gap:0.85rem;">
+          <div>
+            <div class="flex-between mb-1"><span style="font-size:0.9rem;">D-I (2.30 core min)</span><span class="badge badge-verified mono">3.78</span></div>
+            <div class="bar" style="height:6px; background:var(--surface-2); border-radius:3px;"><span style="display:block; height:100%; width:95%; background:var(--green-500); border-radius:3px;"></span></div>
+          </div>
+          <div>
+            <div class="flex-between mb-1"><span style="font-size:0.9rem;">D-II (2.20 core min)</span><span class="badge badge-verified mono">3.78</span></div>
+            <div class="bar" style="height:6px; background:var(--surface-2); border-radius:3px;"><span style="display:block; height:100%; width:97%; background:var(--green-500); border-radius:3px;"></span></div>
+          </div>
+          <div>
+            <div class="flex-between mb-1"><span style="font-size:0.9rem;">NAIA (2.30 GPA + 1 of 3 criteria)</span><span class="badge badge-verified mono">Cleared</span></div>
+            <div class="bar" style="height:6px; background:var(--surface-2); border-radius:3px;"><span style="display:block; height:100%; width:96%; background:var(--green-500); border-radius:3px;"></span></div>
+          </div>
+        </div>
+        <p class="text-dim mt-3" style="font-size:0.82rem;">Forecast last refreshed 2 hours ago. Recalculates after every grade entry.</p>
+      </div>
+    </div>
+  </div>
+
+  <div data-panel="naia" class="hidden">
+    <div class="card"><h3>NAIA Eligibility</h3><p class="text-dim mt-2">Linked to your PlayNAIA account. You meet 2 of 3 criteria (GPA ≥ 2.5 + class rank top 50%). Test score not required.</p></div>
+  </div>
+  <div data-panel="juco" class="hidden">
+    <div class="card"><h3>JUCO Pathway</h3><p class="text-dim mt-2">Junior college route stays open as a development option. Includes guidance on transfer eligibility and 4-year transition.</p></div>
+  </div>
+  <div data-panel="grad" class="hidden">
+    <div class="card"><h3>High School Graduation Requirements</h3><p class="text-dim mt-2">All graduation credits on track. 24 of 26 required credits completed; 4 in progress.</p></div>
+  </div>
+</main>
+
+<script src="app.js"></script>
+<script src="data-loader.js"></script>
+active<activenactiveaactivevactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activenactiveaactivevactive"active>active<activedactiveiactivevactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activenactiveaactivevactive-activeiactivenactivenactiveeactiveractive"active>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeDactiveAactiveSactiveHactive"active activehactiveractiveeactivefactive=active"activeaactivetactivehactivelactiveeactivetactiveeactive-activedactiveaactivesactivehactivebactiveoactiveaactiveractivedactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active⌂active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeHactiveoactivemactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activePactiveIactivePactiveEactive"active activehactiveractiveeactivefactive=active"activepactiveiactivepactiveeactivelactiveiactivenactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active▦active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activePactiveiactivepactiveeactivelactiveiactivenactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeIactiveNactiveTactive"active activehactiveractiveeactivefactive=active"activeiactivenactivetactiveeactiveractivevactiveiactiveeactivewactive-activepactiveractiveaactivecactivetactiveiactivecactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active🎙active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeIactivenactivetactiveeactiveractivevactiveiactiveeactivewactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeTactiveIactiveMactiveEactive"active activehactiveractiveeactivefactive=active"activetactiveiactivemactiveeactivelactiveiactivenactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active🗺active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeTactiveiactivemactiveeactivelactiveiactivenactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activePactiveRactiveOactiveFactive"active activehactiveractiveeactivefactive=active"activeaactivetactivehactivelactiveeactivetactiveeactive-activepactiveractiveoactivefactiveiactivelactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active●active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activePactiveractiveoactivefactiveiactivelactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<active/activedactiveiactivevactive>active<active/activenactiveaactivevactive>
+</body>
+</html>

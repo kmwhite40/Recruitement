@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Athlete Dashboard — ScholarPath Athletics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231E7A4D'/%3E%3Cpath d='M9 22L14 14L18 17L23 9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+</head>
+<body>
+
+<div class="app-shell">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+
+    <div class="side-section">
+      <div class="label">Recruiting</div>
+      <a class="side-link active" href="athlete-dashboard.html"><span class="ic">⌂</span> Dashboard</a>
+      <a class="side-link" href="athlete-profile.html"><span class="ic">●</span> My Profile</a>
+      <a class="side-link" href="pipeline.html"><span class="ic">▦</span> Pipeline</a>
+      <a class="side-link" href="coach-directory.html"><span class="ic">☎</span> Coach Directory</a>
+      <a class="side-link" href="visits.html"><span class="ic">📍</span> Visits</a>
+      <a class="side-link" href="camps.html"><span class="ic">⚑</span> Camps &amp; Showcases</a>
+      <a class="side-link" href="eligibility-tracker.html"><span class="ic">✓</span> Eligibility</a>
+    </div>
+
+    <div class="side-section">
+      <div class="label">Plan &amp; Tools</div>
+      <a class="side-link" href="timeline.html"><span class="ic">🗺</span> Timeline</a>
+      <a class="side-link" href="interview-practice.html"><span class="ic">🎙</span> Interview Practice</a>
+      <a class="side-link" href="#"><span class="ic">🎯</span> College Match</a>
+      <a class="side-link" href="#"><span class="ic">💰</span> Offers</a>
+    </div>
+
+    <div class="side-section">
+      <div class="label">Account</div>
+      <a class="side-link" href="#"><span class="ic">⚙</span> Settings</a>
+      <a class="side-link" href="subscription.html"><span class="ic">★</span> Plan</a>
+      <a class="side-link" href="#"><span class="ic">↩</span> Sign out</a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="app-main">
+    <div class="app-topbar">
+      <div>
+        <div style="color:var(--text-dim); font-size:0.9rem;">Welcome back,</div>
+        <h1>Maya Rodriguez</h1>
+      </div>
+      <div style="display:flex; gap:0.6rem; align-items:center;">
+        <input class="search-input" placeholder="Search…" />
+        <button class="btn btn-secondary btn-sm">Share profile</button>
+      </div>
+    </div>
+
+    <!-- HERO ROW: Score + 3 tasks -->
+    <div class="grid grid-2" style="gap:1.5rem; margin-bottom:1.5rem;">
+      <div class="card card-elevated card-glow">
+        <div class="score-card">
+          <div class="score-ring" data-value="82"></div>
+          <div>
+            <span class="badge badge-verified mb-2"><span class="dot dot-green"></span> On Track</span>
+            <h3 style="margin:0.5rem 0 0.6rem;">Recruiting Readiness</h3>
+            <p class="text-dim" style="font-size:0.95rem;">You're ahead of 78% of class-of-2027 athletes in your sport. Three small actions this week keep your score climbing.</p>
+            <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+              <span class="badge">Acad 88</span>
+              <span class="badge">Athl 84</span>
+              <span class="badge">Film 74</span>
+              <span class="badge">Outreach 60</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="flex-between mb-3">
+          <h3 style="font-size:1.05rem;">Today's Three</h3>
+          <a href="#" class="text-dim" style="font-size:0.85rem;">View all →</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.7rem;">
+          <div class="task">
+            <div class="task-icon">▶</div>
+            <div>
+              <h4>Upload Saturday's game film</h4>
+              <p>AI will tag your top 8 attacking moments automatically.</p>
+            </div>
+            <button class="btn btn-primary btn-sm">Start</button>
+          </div>
+          <div class="task">
+            <div class="task-icon blue">✉</div>
+            <div>
+              <h4>Follow up with Coach Davis</h4>
+              <p>It's been 9 days since your introduction email. Draft ready.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm">Review</button>
+          </div>
+          <div class="task">
+            <div class="task-icon amber">♥</div>
+            <div>
+              <h4>This week's wellness check-in</h4>
+              <p>60 seconds. Sleep, soreness, and mood.</p>
+            </div>
+            <button class="btn btn-secondary btn-sm">Start</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROGRESS STRIP -->
+    <div class="progress-strip mb-4">
+      <div class="progress-pill">
+        <div class="lbl">Eligibility</div>
+        <div class="val"><span class="dot dot-green"></span> Green · 14/16 core</div>
+        <div class="bar"><span style="width:88%"></span></div>
+      </div>
+      <div class="progress-pill">
+        <div class="lbl">Profile complete</div>
+        <div class="val mono">92%</div>
+        <div class="bar"><span style="width:92%"></span></div>
+      </div>
+      <div class="progress-pill">
+        <div class="lbl">Coaches viewing</div>
+        <div class="val mono">28 schools</div>
+        <div class="bar"><span style="width:64%"></span></div>
+      </div>
+      <div class="progress-pill">
+        <div class="lbl">Outreach replied</div>
+        <div class="val mono">6 of 18</div>
+        <div class="bar"><span style="width:33%"></span></div>
+      </div>
+    </div>
+
+    <!-- TWO COL CONTENT -->
+    <div class="grid grid-2" style="gap:1.5rem;">
+      <!-- Coach activity -->
+      <div class="card">
+        <div class="flex-between mb-3">
+          <h3 style="font-size:1.05rem;">Recent recruiter activity</h3>
+          <span class="badge badge-blue">+ 12 this week</span>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.6rem;">
+          <div style="display:flex; gap:0.8rem; align-items:center; padding:0.75rem; background:var(--surface-2); border-radius:var(--radius);">
+            <div style="width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#3B82F6,#1B3756); display:grid; place-items:center; font-weight:700; font-size:0.8rem;">P</div>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.92rem;">University of the Pacific</div>
+              <div style="font-size:0.82rem; color:var(--text-dim);">D-II · Watched 4:12 of game film · 2 hrs ago</div>
+            </div>
+            <span class="badge badge-blue">Watchlist</span>
+          </div>
+          <div style="display:flex; gap:0.8rem; align-items:center; padding:0.75rem; background:var(--surface-2); border-radius:var(--radius);">
+            <div style="width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#F4A300,#7A5200); display:grid; place-items:center; font-weight:700; font-size:0.8rem;">L</div>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.92rem;">Lewis &amp; Clark</div>
+              <div style="font-size:0.82rem; color:var(--text-dim);">D-III · Profile viewed · Today</div>
+            </div>
+            <span class="badge">View</span>
+          </div>
+          <div style="display:flex; gap:0.8rem; align-items:center; padding:0.75rem; background:var(--surface-2); border-radius:var(--radius);">
+            <div style="width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#2BB673,#156040); display:grid; place-items:center; font-weight:700; font-size:0.8rem;">S</div>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.92rem;">Southern Oregon</div>
+              <div style="font-size:0.82rem; color:var(--text-dim);">NAIA · Requested film · Yesterday</div>
+            </div>
+            <span class="badge badge-verified">Hot</span>
+          </div>
+          <div style="display:flex; gap:0.8rem; align-items:center; padding:0.75rem; background:var(--surface-2); border-radius:var(--radius);">
+            <div style="width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#8B5CF6,#4C2D8F); display:grid; place-items:center; font-weight:700; font-size:0.8rem;">W</div>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.92rem;">Whitworth University</div>
+              <div style="font-size:0.82rem; color:var(--text-dim);">D-III · Saved to watchlist · 2 days ago</div>
+            </div>
+            <span class="badge">Saved</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- College matches -->
+      <div class="card">
+        <div class="flex-between mb-3">
+          <h3 style="font-size:1.05rem;">Top college matches</h3>
+          <a href="#" class="text-dim" style="font-size:0.85rem;">All matches →</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.7rem;">
+          <div style="padding:1rem; border:1px solid var(--border); border-radius:var(--radius);">
+            <div class="flex-between mb-1"><div style="font-weight:600;">Whitworth University</div><span class="badge badge-verified">94% Fit</span></div>
+            <div style="display:flex; gap:0.6rem; flex-wrap:wrap; font-size:0.82rem; color:var(--text-dim);">
+              <span>D-III</span><span>•</span><span>WA</span><span>•</span><span>Net est. $14k</span><span>•</span><span class="text-accent">Likely</span>
+            </div>
+          </div>
+          <div style="padding:1rem; border:1px solid var(--border); border-radius:var(--radius);">
+            <div class="flex-between mb-1"><div style="font-weight:600;">Southern Oregon</div><span class="badge badge-verified">88% Fit</span></div>
+            <div style="display:flex; gap:0.6rem; flex-wrap:wrap; font-size:0.82rem; color:var(--text-dim);">
+              <span>NAIA</span><span>•</span><span>OR</span><span>•</span><span>Net est. $11k</span><span>•</span><span class="text-accent">Target</span>
+            </div>
+          </div>
+          <div style="padding:1rem; border:1px solid var(--border); border-radius:var(--radius);">
+            <div class="flex-between mb-1"><div style="font-weight:600;">University of the Pacific</div><span class="badge badge-blue">76% Fit</span></div>
+            <div style="display:flex; gap:0.6rem; flex-wrap:wrap; font-size:0.82rem; color:var(--text-dim);">
+              <span>D-II</span><span>•</span><span>CA</span><span>•</span><span>Net est. $22k</span><span>•</span><span style="color:var(--amber-500);">Reach</span>
+            </div>
+          </div>
+          <div style="padding:1rem; border:1px solid var(--border); border-radius:var(--radius);">
+            <div class="flex-between mb-1"><div style="font-weight:600;">Lewis &amp; Clark</div><span class="badge badge-blue">71% Fit</span></div>
+            <div style="display:flex; gap:0.6rem; flex-wrap:wrap; font-size:0.82rem; color:var(--text-dim);">
+              <span>D-III</span><span>•</span><span>OR</span><span>•</span><span>Net est. $18k</span><span>•</span><span style="color:var(--amber-500);">Reach</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upcoming events -->
+      <div class="card">
+        <div class="flex-between mb-3">
+          <h3 style="font-size:1.05rem;">Upcoming &amp; events</h3>
+          <a href="#" class="text-dim" style="font-size:0.85rem;">Calendar →</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.6rem;">
+          <div style="display:flex; gap:0.9rem; align-items:center; padding:0.85rem 1rem; background:var(--surface-2); border-radius:var(--radius);">
+            <div style="text-align:center; width:48px;">
+              <div style="font-size:0.7rem; color:var(--text-muted); letter-spacing:0.08em;">JUN</div>
+              <div style="font-size:1.3rem; font-weight:800; line-height:1;">14</div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.92rem;">Pacific NW ID Camp</div>
+              <div style="font-size:0.82rem; color:var(--text-dim);">Tacoma · 4 D-II + 2 NAIA coaches confirmed</div>
+            </div>
+            <span class="badge badge-verified">Registered</span>
+          </div>
+          <div style="display:flex; gap:0.9rem; align-items:center; padding:0.85rem 1rem; background:var(--surface-2); border-radius:var(--radius);">
+            <div style="text-align:center; width:48px;">
+              <div style="font-size:0.7rem; color:var(--text-muted); letter-spacing:0.08em;">JUN</div>
+              <div style="font-size:1.3rem; font-weight:800; line-height:1;">21</div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.92rem;">Club Showcase Tournament</div>
+              <div style="font-size:0.82rem; color:var(--text-dim);">Portland · Verified video capture available</div>
+            </div>
+            <button class="btn btn-secondary btn-sm">Details</button>
+          </div>
+          <div style="display:flex; gap:0.9rem; align-items:center; padding:0.85rem 1rem; background:var(--surface-2); border-radius:var(--radius);">
+            <div style="text-align:center; width:48px;">
+              <div style="font-size:0.7rem; color:var(--text-muted); letter-spacing:0.08em;">JUL</div>
+              <div style="font-size:1.3rem; font-weight:800; line-height:1;">02</div>
+            </div>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.92rem;">SAT Test Date (Optional)</div>
+              <div style="font-size:0.82rem; color:var(--text-dim);">Most schools test-optional · Practice scheduled</div>
+            </div>
+            <span class="badge">Optional</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wellness -->
+      <div class="card">
+        <div class="flex-between mb-3">
+          <h3 style="font-size:1.05rem;">Wellness this week</h3>
+          <span class="badge badge-amber">⚠ Sleep dipped</span>
+        </div>
+        <div style="display:flex; gap:0.6rem; align-items:flex-end; height:120px; padding:1rem 0;">
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.4rem;"><div style="height:70%; width:24px; background:linear-gradient(180deg,var(--green-500),var(--green-700)); border-radius:6px 6px 0 0;"></div><span style="font-size:0.72rem; color:var(--text-muted);">M</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.4rem;"><div style="height:80%; width:24px; background:linear-gradient(180deg,var(--green-500),var(--green-700)); border-radius:6px 6px 0 0;"></div><span style="font-size:0.72rem; color:var(--text-muted);">T</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.4rem;"><div style="height:55%; width:24px; background:linear-gradient(180deg,var(--amber-500),#7A5200); border-radius:6px 6px 0 0;"></div><span style="font-size:0.72rem; color:var(--text-muted);">W</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.4rem;"><div style="height:50%; width:24px; background:linear-gradient(180deg,var(--amber-500),#7A5200); border-radius:6px 6px 0 0;"></div><span style="font-size:0.72rem; color:var(--text-muted);">T</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.4rem;"><div style="height:45%; width:24px; background:linear-gradient(180deg,var(--red-500),#7A2630); border-radius:6px 6px 0 0;"></div><span style="font-size:0.72rem; color:var(--text-muted);">F</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.4rem;"><div style="height:75%; width:24px; background:linear-gradient(180deg,var(--green-500),var(--green-700)); border-radius:6px 6px 0 0;"></div><span style="font-size:0.72rem; color:var(--text-muted);">S</span></div>
+          <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:0.4rem;"><div style="height:85%; width:24px; background:linear-gradient(180deg,var(--green-500),var(--green-700)); border-radius:6px 6px 0 0;"></div><span style="font-size:0.72rem; color:var(--text-muted);">S</span></div>
+        </div>
+        <p class="text-dim" style="font-size:0.88rem; margin-top:0.5rem;">High soreness 3 days running. Consider a recovery day before Saturday's match — your trainer will see this if you'd like.</p>
+        <button class="btn btn-secondary btn-sm mt-2">Share with trainer</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="app.js"></script>
+<script src="data-loader.js"></script>
+<nav class="bottom-nav"><div class="bottom-nav-inner"><a class="bottom-link active" href="athlete-dashboard.html"><span class="ic">⌂</span><span>Home</span></a><a class="bottom-link" href="pipeline.html"><span class="ic">▦</span><span>Pipeline</span></a><a class="bottom-link" href="interview-practice.html"><span class="ic">🎙</span><span>Interview</span></a><a class="bottom-link" href="timeline.html"><span class="ic">🗺</span><span>Timeline</span></a><a class="bottom-link" href="athlete-profile.html"><span class="ic">●</span><span>Profile</span></a></div></nav>
+</body>
+</html>

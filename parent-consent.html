@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parent / Guardian Consent — ScholarPath Athletics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+    <ul class="nav-links">
+      <li><a href="terms.html">Terms</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container" style="padding:3rem 1.5rem; max-width:720px;">
+  <span class="eyebrow">Required for athletes under 18</span>
+  <h1 style="font-size:2.2rem; margin:0.75rem 0 0.5rem;">Parent / Guardian Consent</h1>
+  <p class="text-dim mb-4">A parent or legal guardian must review and sign before an under-18 athlete profile is published or visible to recruiters.</p>
+
+  <div class="card">
+    <h3 style="margin-bottom:0.6rem;">What you're consenting to</h3>
+    <ul style="list-style:none; padding:0;">
+      <li style="padding:0.5rem 0; color:var(--text-dim);">→ Your athlete may publish a profile visible to identity-verified college recruiters.</li>
+      <li style="padding:0.5rem 0; color:var(--text-dim);">→ Athletic film, stats, transcripts, and eligibility status may be displayed when authorized.</li>
+      <li style="padding:0.5rem 0; color:var(--text-dim);">→ Communications between recruiters and your athlete are audit-logged. You will receive a copy of every recruiter message.</li>
+      <li style="padding:0.5rem 0; color:var(--text-dim);">→ You can revoke consent at any time, removing your athlete's profile from recruiter visibility within 24 hours.</li>
+      <li style="padding:0.5rem 0; color:var(--text-dim);">→ ScholarPath does not sell student data. See <a href="privacy.html" style="color:var(--green-500);">Privacy Policy</a>.</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <form id="consentForm">
+      <div style="margin-bottom:1rem;">
+        <label style="display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.4rem;">Athlete name</label>
+        <input class="range-input" name="athlete_name" required style="width:100%;" />
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.4rem;">Parent / guardian full name</label>
+        <input class="range-input" name="parent_name" required style="width:100%;" />
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.4rem;">Parent / guardian email</label>
+        <input class="range-input" type="email" name="parent_email" required style="width:100%;" />
+      </div>
+      <div style="margin-bottom:1.25rem;">
+        <label style="display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.4rem;">Relationship</label>
+        <select class="range-input" name="relationship" required style="width:100%;">
+          <option value="parent">Parent</option>
+          <option value="guardian">Legal guardian</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <label class="checkbox" style="margin-bottom:0.6rem;">
+        <input type="checkbox" required /> I confirm I am the athlete's parent or legal guardian.
+      </label>
+      <label class="checkbox" style="margin-bottom:0.6rem;">
+        <input type="checkbox" required /> I consent to the data uses described above and in the Privacy Policy.
+      </label>
+      <label class="checkbox" style="margin-bottom:1.25rem;">
+        <input type="checkbox" required /> I understand I can revoke this consent at any time.
+      </label>
+
+      <button class="btn btn-primary btn-full" type="submit">Sign &amp; submit</button>
+      <p id="msg" class="text-center mt-2" style="font-size:0.9rem; min-height:1.2em;"></p>
+    </form>
+  </div>
+</main>
+
+<script>
+document.getElementById('consentForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const msg = document.getElementById('msg');
+  msg.style.color = 'var(--text-dim)';
+  msg.textContent = 'Recording consent…';
+  try {
+    const res = await fetch('/api/auth/consent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({
+        athlete_id: 1, // demo: linked to seeded athlete
+        scope: 'profile_publish_recruiter_visibility',
+      }),
+    });
+    if (res.status === 401) {
+      msg.style.color = 'var(--amber-500)';
+      msg.textContent = 'Sign in as a parent first to record consent.';
+      return;
+    }
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'consent_failed');
+    msg.style.color = 'var(--green-500)';
+    msg.textContent = '✓ Consent recorded. Audit log entry created.';
+  } catch (e) {
+    msg.style.color = 'var(--red-500)';
+    msg.textContent = 'Could not record consent: ' + e.message;
+  }
+});
+</script>
+
+</body>
+</html>

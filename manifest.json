@@ -1,0 +1,32 @@
+{
+  "name": "ScholarPath Athletics",
+  "short_name": "ScholarPath",
+  "description": "Modern scholarship-readiness platform for high school student-athletes.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#050B14",
+  "theme_color": "#1E7A4D",
+  "categories": ["education", "sports", "productivity"],
+  "icons": [
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjQyIiBmaWxsPSIjMUU3QTREIi8+PHBhdGggZD0iTTU0IDEzMkw4NCA4NEwxMDggMTAyTDE0MCA1NCIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PC9zdmc+",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0iIzFFN0E0RCIvPjxwYXRoIGQ9Ik0xNDQgMzUyTDIyNCAyMjRMMjg4IDI3MkwzNzIgMTQ0IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjM4IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    { "name": "My Dashboard",   "url": "/athlete-dashboard.html" },
+    { "name": "Eligibility",    "url": "/eligibility-tracker.html" },
+    { "name": "My Profile",     "url": "/athlete-profile.html" },
+    { "name": "Recruiter Search","url": "/recruiter-portal.html" }
+  ]
+}

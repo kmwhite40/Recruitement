@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recruiting Pipeline — ScholarPath Athletics</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .kanban {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(240px, 1fr));
+      gap: 1rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+    }
+    .col {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1rem;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+    }
+    .col-head { display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.85rem; }
+    .col-head h4 { font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); }
+    .col-count { font-family:var(--font-mono); font-weight:700; color:var(--green-500); }
+    .col[data-stage="researching"] .col-count { color: var(--slate-400); }
+    .col[data-stage="contacted"]   .col-count { color: var(--blue-500); }
+    .col[data-stage="replied"]     .col-count { color: var(--purple-500); }
+    .col[data-stage="visiting"]    .col-count { color: var(--amber-500); }
+    .col[data-stage="offered"]     .col-count { color: var(--green-500); }
+    .col[data-stage="committed"]   .col-count { color: var(--green-500); }
+    .col[data-stage="passed"]      .col-count { color: var(--text-muted); }
+    .pipe-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.85rem 0.95rem;
+      margin-bottom: 0.6rem;
+      cursor: grab;
+      transition: transform var(--duration), border-color var(--duration);
+    }
+    .pipe-card:hover { border-color: var(--border-strong); transform: translateY(-1px); }
+    .pipe-card.dragging { opacity: 0.5; }
+    .pipe-card .name { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .pipe-card .meta { color: var(--text-dim); font-size: 0.78rem; display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .pipe-card .next { margin-top:0.5rem; font-size:0.78rem; color:var(--amber-500); }
+    .pipe-card .fit { font-family: var(--font-mono); font-weight: 700; }
+    .col.over { background: rgba(43,182,115,0.08); border-color: var(--green-500); }
+    .add-col-btn { font-size: 0.78rem; color: var(--text-muted); background: none; border: 1px dashed var(--border); padding: 0.5rem; border-radius: var(--radius); width:100%; transition: all var(--duration); }
+    .add-col-btn:hover { color: var(--text); border-color: var(--green-500); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+    <ul class="nav-links">
+      <li><a href="athlete-dashboard.html">Dashboard</a></li>
+      <li><a href="pipeline.html">Pipeline</a></li>
+      <li><a href="coach-directory.html">Coaches</a></li>
+      <li><a href="camps.html">Camps</a></li>
+      <li><a href="visits.html">Visits</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-secondary btn-sm" href="#">Maya R. ▾</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container" style="padding:2rem 1.5rem 4rem; max-width:1480px;">
+  <div class="app-topbar">
+    <div>
+      <h1>Recruiting Pipeline</h1>
+      <p class="text-dim mt-1">Drag schools across stages as they progress. Track next actions and deadlines for each school in one place.</p>
+    </div>
+    <div style="display:flex; gap:0.6rem;">
+      <button id="addSchool" class="btn btn-primary btn-sm">+ Add school</button>
+    </div>
+  </div>
+
+  <!-- Funnel summary -->
+  <div class="stat-row mb-4" id="summary">
+    <div class="stat-tile"><div class="lbl">Total tracked</div><div class="val mono" id="sumTotal">—</div></div>
+    <div class="stat-tile"><div class="lbl">In active comm</div><div class="val mono" id="sumActive" style="color:var(--blue-500);">—</div></div>
+    <div class="stat-tile"><div class="lbl">Visits + Offers</div><div class="val mono" id="sumLate" style="color:var(--amber-500);">—</div></div>
+    <div class="stat-tile"><div class="lbl">Next action due</div><div class="val mono" id="sumDue" style="color:var(--green-500); font-size:1.4rem;">—</div></div>
+  </div>
+
+  <div class="kanban" id="kanban">
+    <div class="col" data-stage="researching"><div class="col-head"><h4>Researching</h4><span class="col-count">0</span></div><div data-list></div></div>
+    <div class="col" data-stage="contacted"><div class="col-head"><h4>Contacted</h4><span class="col-count">0</span></div><div data-list></div></div>
+    <div class="col" data-stage="replied"><div class="col-head"><h4>Replied</h4><span class="col-count">0</span></div><div data-list></div></div>
+    <div class="col" data-stage="visiting"><div class="col-head"><h4>Visiting</h4><span class="col-count">0</span></div><div data-list></div></div>
+    <div class="col" data-stage="offered"><div class="col-head"><h4>Offered</h4><span class="col-count">0</span></div><div data-list></div></div>
+    <div class="col" data-stage="committed"><div class="col-head"><h4>Committed</h4><span class="col-count">0</span></div><div data-list></div></div>
+    <div class="col" data-stage="passed"><div class="col-head"><h4>Passed</h4><span class="col-count">0</span></div><div data-list></div></div>
+  </div>
+
+  <p class="text-muted mt-3" style="text-align:center; font-size:0.85rem;">Tip: drag a card between columns to update its stage. Changes persist immediately.</p>
+</main>
+
+<script src="app.js"></script>
+<script>
+const ATHLETE_ID = 1;
+
+async function api(path, opts = {}) {
+  const r = await fetch('/api' + path, { credentials: 'include', headers: { 'Content-Type': 'application/json' }, ...opts });
+  if (!r.ok) throw new Error('api_' + r.status);
+  return r.json();
+}
+
+function renderCard(s) {
+  const el = document.createElement('div');
+  el.className = 'pipe-card';
+  el.draggable = true;
+  el.dataset.id = s.id;
+  el.innerHTML = `
+    <div style="display:flex; justify-content:space-between; gap:0.5rem;">
+      <div class="name">${s.school_name}</div>
+      ${s.fit_score ? `<span class="fit" style="color:${s.fit_score >= 85 ? 'var(--green-500)' : s.fit_score >= 72 ? 'var(--blue-500)' : 'var(--text-dim)'};">${s.fit_score}</span>` : ''}
+    </div>
+    <div class="meta">
+      ${s.division ? `<span class="badge" style="font-size:0.68rem; padding:0.15rem 0.5rem;">${s.division}</span>` : ''}
+      ${s.state ? `<span>${s.state}</span>` : ''}
+    </div>
+    ${s.next_action ? `<div class="next">→ ${s.next_action}${s.next_action_due ? ` · ${s.next_action_due}` : ''}</div>` : ''}
+  `;
+  el.addEventListener('dragstart', () => { el.classList.add('dragging'); window._drag = { id: s.id, from: s.stage }; });
+  el.addEventListener('dragend', () => el.classList.remove('dragging'));
+  return el;
+}
+
+async function load() {
+  const data = await api('/pipeline/' + ATHLETE_ID);
+  document.querySelectorAll('.col').forEach(col => {
+    const stage = col.dataset.stage;
+    const list = col.querySelector('[data-list]');
+    list.innerHTML = '';
+    (data.by_stage[stage] || []).forEach(s => list.appendChild(renderCard({ ...s, stage })));
+    col.querySelector('.col-count').textContent = data.counts[stage] || 0;
+  });
+
+  const c = data.counts;
+  document.getElementById('sumTotal').textContent = data.total;
+  document.getElementById('sumActive').textContent = (c.contacted + c.replied) || 0;
+  document.getElementById('sumLate').textContent = (c.visiting + c.offered + c.committed) || 0;
+  // Find soonest due action
+  const allRows = Object.values(data.by_stage).flat();
+  const due = allRows.filter(r => r.next_action_due).sort((a,b) => a.next_action_due.localeCompare(b.next_action_due))[0];
+  document.getElementById('sumDue').textContent = due ? due.next_action_due : '—';
+}
+
+// Drag and drop wiring
+document.querySelectorAll('.col').forEach(col => {
+  col.addEventListener('dragover', e => { e.preventDefault(); col.classList.add('over'); });
+  col.addEventListener('dragleave', () => col.classList.remove('over'));
+  col.addEventListener('drop', async e => {
+    e.preventDefault();
+    col.classList.remove('over');
+    if (!window._drag) return;
+    const newStage = col.dataset.stage;
+    if (newStage === window._drag.from) return;
+    try {
+      await api(`/pipeline/${ATHLETE_ID}/${window._drag.id}/stage`, {
+        method: 'PATCH',
+        body: JSON.stringify({ stage: newStage }),
+      });
+      load();
+    } catch (e) {
+      alert('Sign in as Maya to update pipeline (maya@example.com / password123)');
+    }
+  });
+});
+
+document.getElementById('addSchool').addEventListener('click', async () => {
+  const name = prompt('School name?');
+  if (!name) return;
+  const division = prompt('Division (D-I / D-II / D-III / NAIA / JUCO)?', 'D-III');
+  const state = prompt('State?', 'OR');
+  try {
+    await api(`/pipeline/${ATHLETE_ID}`, { method: 'POST', body: JSON.stringify({ school_name: name, division, state, region: 'West', stage: 'researching' }) });
+    load();
+  } catch (e) {
+    alert('Sign in to add: ' + e.message);
+  }
+});
+
+load();
+</script>
+
+<nav class="bottom-nav"><div class="bottom-nav-inner"><a class="bottom-link" href="athlete-dashboard.html"><span class="ic">⌂</span><span>Home</span></a><a class="bottom-link active" href="pipeline.html"><span class="ic">▦</span><span>Pipeline</span></a><a class="bottom-link" href="interview-practice.html"><span class="ic">🎙</span><span>Interview</span></a><a class="bottom-link" href="timeline.html"><span class="ic">🗺</span><span>Timeline</span></a><a class="bottom-link" href="athlete-profile.html"><span class="ic">●</span><span>Profile</span></a></div></nav>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Runtime data — regenerable from server/seed.js
+data/scholarpath.db
+data/scholarpath.db-shm
+data/scholarpath.db-wal
+data/film/
+data/documents/
+
+# Local env / secrets
+.env
+.env.local
+*.local
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*

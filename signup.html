@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Create account — ScholarPath Athletics</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231E7A4D'/%3E%3Cpath d='M9 22L14 14L18 17L23 9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="subscription.html">Pricing</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-secondary btn-sm" href="login.html">Sign in</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container" style="padding:4rem 1.5rem; max-width:560px;">
+  <div class="card card-elevated">
+    <div class="text-center mb-3">
+      <h2 style="font-size:1.6rem;">Create your account</h2>
+      <p class="text-dim mt-1" style="font-size:0.95rem;">Free Spark tier. No card required. Parental consent for under 18.</p>
+    </div>
+
+    <div class="role-pills mb-3" id="rolePicker">
+      <button type="button" class="role-pill active" data-role="athlete">Athlete</button>
+      <button type="button" class="role-pill" data-role="parent">Parent</button>
+      <button type="button" class="role-pill" data-role="hs_coach">Coach</button>
+      <button type="button" class="role-pill" data-role="recruiter">Recruiter</button>
+      <button type="button" class="role-pill" data-role="loader">Loader</button>
+    </div>
+
+    <form id="signupForm">
+      <input type="hidden" name="role" value="athlete" />
+
+      <div style="margin-bottom:1rem;">
+        <label style="display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.4rem;">Full name</label>
+        <input class="range-input" type="text" name="full_name" placeholder="First Last" required style="width:100%;" />
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.4rem;">Email</label>
+        <input class="range-input" type="email" name="email" placeholder="you@school.edu" required style="width:100%;" />
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.4rem;">Phone (optional)</label>
+        <input class="range-input" type="tel" name="phone" placeholder="(555) 555-0000" style="width:100%;" />
+      </div>
+      <div style="margin-bottom:1rem;">
+        <label style="display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.4rem;">Birthdate</label>
+        <input class="range-input" type="date" name="birthdate" style="width:100%;" />
+      </div>
+      <div style="margin-bottom:1.25rem;">
+        <label style="display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.4rem;">Password (min 8 chars)</label>
+        <input class="range-input" type="password" name="password" placeholder="••••••••" required minlength="8" style="width:100%;" />
+      </div>
+
+      <label class="checkbox" style="margin-bottom:1.25rem;">
+        <input type="checkbox" required /> I agree to the <a href="terms.html" style="color:var(--green-500);">Terms</a> and <a href="privacy.html" style="color:var(--green-500);">Privacy Policy</a>. If under 18, I confirm a parent/guardian will provide consent.
+      </label>
+
+      <button class="btn btn-primary btn-full" type="submit">Create my account</button>
+      <p id="err" class="text-center mt-2" style="color:var(--red-500); font-size:0.85rem; min-height:1.2em;"></p>
+    </form>
+
+    <p class="text-center mt-3 text-dim" style="font-size:0.9rem;">
+      Already have an account? <a href="login.html" style="color:var(--green-500);">Sign in →</a>
+    </p>
+  </div>
+</main>
+
+<script>
+document.querySelectorAll('#rolePicker .role-pill').forEach(p => {
+  p.addEventListener('click', () => {
+    document.querySelectorAll('#rolePicker .role-pill').forEach(x => x.classList.remove('active'));
+    p.classList.add('active');
+    document.querySelector('input[name="role"]').value = p.dataset.role;
+  });
+});
+
+document.getElementById('signupForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const err = document.getElementById('err');
+  err.textContent = '';
+  const body = {
+    email: fd.get('email'),
+    password: fd.get('password'),
+    role: fd.get('role'),
+    full_name: fd.get('full_name'),
+    phone: fd.get('phone') || null,
+    birthdate: fd.get('birthdate') || null,
+  };
+  try {
+    const res = await fetch('/api/auth/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      err.textContent = data.error === 'email_taken' ? 'Email already in use.' :
+                        data.error === 'password_too_short' ? 'Password must be at least 8 characters.' :
+                        (data.error || 'Sign up failed.');
+      return;
+    }
+    localStorage.setItem('sp_user', JSON.stringify(data.user));
+    localStorage.setItem('sp_token', data.token);
+    const dest = data.user.role === 'recruiter' ? 'recruiter-portal.html' : 'athlete-dashboard.html';
+    window.location.href = dest;
+  } catch (e) {
+    err.textContent = 'Network error. Make sure the server is running (npm start).';
+  }
+});
+</script>
+
+</body>
+</html>

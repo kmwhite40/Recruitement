@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign in — ScholarPath Athletics</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231E7A4D'/%3E%3Cpath d='M9 22L14 14L18 17L23 9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#features">Features</a></li>
+      <li><a href="subscription.html">Pricing</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="signup.html">Create account</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container" style="padding:5rem 1.5rem; max-width:480px;">
+  <div class="card card-elevated">
+    <div class="text-center mb-3">
+      <span class="brand-mark" style="display:inline-grid; margin-bottom:1rem;">SP</span>
+      <h2 style="font-size:1.6rem;">Welcome back</h2>
+      <p class="text-dim mt-1" style="font-size:0.95rem;">Sign in to your ScholarPath account.</p>
+    </div>
+
+    <form id="loginForm">
+      <div style="margin-bottom:1rem;">
+        <label style="display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.4rem;">Email</label>
+        <input class="range-input" type="email" name="email" placeholder="you@school.edu" required style="width:100%;" />
+      </div>
+      <div style="margin-bottom:1.25rem;">
+        <label style="display:block; font-size:0.85rem; color:var(--text-dim); margin-bottom:0.4rem;">Password</label>
+        <input class="range-input" type="password" name="password" placeholder="••••••••" required style="width:100%;" />
+      </div>
+      <button class="btn btn-primary btn-full" type="submit">Sign in</button>
+      <p id="err" class="text-center mt-2" style="color:var(--red-500); font-size:0.85rem; min-height:1.2em;"></p>
+    </form>
+
+    <div class="divider"></div>
+
+    <div style="font-size:0.85rem; color:var(--text-muted);">
+      <p><strong style="color:var(--text);">Demo accounts</strong> (password: <span class="mono">password123</span>):</p>
+      <ul style="list-style:none; padding:0; margin-top:0.5rem;">
+        <li style="padding:0.3rem 0;">Athlete: <span class="mono">maya@example.com</span></li>
+        <li style="padding:0.3rem 0;">Parent: <span class="mono">parent.rodriguez@example.com</span></li>
+        <li style="padding:0.3rem 0;">Coach: <span class="mono">coach.williams@lincolnhs.edu</span></li>
+        <li style="padding:0.3rem 0;">Recruiter: <span class="mono">coach.davis@whitworth.edu</span></li>
+      </ul>
+    </div>
+
+    <p class="text-center mt-3 text-dim" style="font-size:0.9rem;">
+      New here? <a href="signup.html" style="color:var(--green-500);">Create an account →</a>
+    </p>
+  </div>
+</main>
+
+<script>
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  const err = document.getElementById('err');
+  err.textContent = '';
+  try {
+    const res = await fetch('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ email: fd.get('email'), password: fd.get('password') }),
+    });
+    const data = await res.json();
+    if (!res.ok) {
+      err.textContent = data.error === 'invalid_credentials' ? 'Invalid email or password.' : (data.error || 'Sign in failed.');
+      return;
+    }
+    localStorage.setItem('sp_user', JSON.stringify(data.user));
+    localStorage.setItem('sp_token', data.token);
+    const dest = data.user.role === 'recruiter' ? 'recruiter-portal.html' : 'athlete-dashboard.html';
+    window.location.href = dest;
+  } catch (e) {
+    err.textContent = 'Network error. Make sure the server is running (npm start).';
+  }
+});
+</script>
+
+</body>
+</html>

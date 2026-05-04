@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ScholarPath Athletics — Built to be Recruited. Built to be Ready.</title>
+  <meta name="description" content="The modern scholarship-readiness platform for high school student-athletes. Verified film, real-time NCAA eligibility, AI college matching, and trusted recruiter access." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231E7A4D'/%3E%3Cpath d='M9 22L14 14L18 17L23 9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+</head>
+<body>
+
+<!-- ==================== NAV ==================== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">SP</span>
+      <span>ScholarPath</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="athlete-dashboard.html">Athletes</a></li>
+      <li><a href="recruiter-portal.html">Recruiters</a></li>
+      <li><a href="eligibility-tracker.html">Eligibility</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-ghost btn-sm" href="subscription.html">Sign in</a>
+      <a class="btn btn-primary btn-sm" href="subscription.html">Get Started</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="eyebrow fade-up">Modern Scholarship Readiness</span>
+        <h1 class="fade-up d1">Built to be <span class="accent">Recruited</span>.<br/>Built to be <span class="accent">Ready</span>.</h1>
+        <p class="lead fade-up d2">
+          ScholarPath is the only platform that pairs verified athletic film with real-time NCAA, NAIA, and JUCO eligibility tracking — so the right college coaches see your athlete, and your athlete is actually ready when they call.
+        </p>
+        <div class="hero-cta fade-up d3">
+          <a href="subscription.html" class="btn btn-primary btn-lg">Start Free</a>
+          <a href="athlete-dashboard.html" class="btn btn-secondary btn-lg">See the Product</a>
+        </div>
+        <div class="hero-meta fade-up d4">
+          <div class="meta-stat">
+            <div class="num">8M+</div>
+            <div class="lbl">High school athletes</div>
+          </div>
+          <div class="meta-stat">
+            <div class="num">$19B</div>
+            <div class="lbl">Athletic aid awarded annually</div>
+          </div>
+          <div class="meta-stat">
+            <div class="num">#1</div>
+            <div class="lbl">Reason recruits lose offers: academics</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-card hv-1">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1rem;">
+            <div>
+              <div style="font-size:0.78rem; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase;">Readiness Score</div>
+              <div style="font-size:2.4rem; font-weight:800; letter-spacing:-0.04em;">82<span style="font-size:1rem; color:var(--text-dim); font-weight:500;"> / 100</span></div>
+            </div>
+            <div class="badge badge-verified"><span class="dot dot-green"></span> On Track</div>
+          </div>
+          <div class="progress-strip">
+            <div class="progress-pill" style="padding:0.65rem 0.8rem;">
+              <div class="lbl">Academics</div>
+              <div class="val mono">3.74</div>
+              <div class="bar"><span style="width:88%"></span></div>
+            </div>
+            <div class="progress-pill" style="padding:0.65rem 0.8rem;">
+              <div class="lbl">Film</div>
+              <div class="val mono">12 clips</div>
+              <div class="bar"><span style="width:74%"></span></div>
+            </div>
+            <div class="progress-pill" style="padding:0.65rem 0.8rem;">
+              <div class="lbl">Outreach</div>
+              <div class="val mono">18 sent</div>
+              <div class="bar"><span style="width:60%"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="visual-card hv-2">
+          <div style="font-size:0.78rem; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.6rem;">Coach View Today</div>
+          <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:0.8rem;">
+            <div style="width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,#3B82F6,#1B3756); display:grid; place-items:center; font-weight:700; font-size:0.8rem;">U</div>
+            <div>
+              <div style="font-weight:600; font-size:0.92rem;">University of [Pacific]</div>
+              <div style="font-size:0.78rem; color:var(--text-dim);">D-II • Watched 4:12 of game film</div>
+            </div>
+          </div>
+          <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+            <span class="badge badge-blue">+ Watchlist</span>
+            <span class="badge badge-verified">Verified film</span>
+          </div>
+        </div>
+
+        <div class="visual-card hv-3">
+          <div style="font-size:0.7rem; color:var(--text-muted); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:0.5rem;">NCAA Core</div>
+          <div style="font-size:1.3rem; font-weight:700; letter-spacing:-0.02em; margin-bottom:0.3rem;">14 of 16</div>
+          <div style="font-size:0.78rem; color:var(--text-dim);">Pace: green</div>
+          <div class="bar" style="margin-top:0.6rem; height:6px; background:rgba(255,255,255,0.1); border-radius:3px;"><span style="display:block; height:100%; width:88%; background:var(--green-500); border-radius:3px;"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== TRUST STRIP ==================== -->
+<section class="section-sm">
+  <div class="container">
+    <div class="kicker">Built for trust. Verified at every step.</div>
+    <div class="trust-strip">
+      <div class="trust-item">NCAA Eligibility Sync</div>
+      <div class="trust-item">PlayNAIA</div>
+      <div class="trust-item">SOC 2 · FERPA · COPPA</div>
+      <div class="trust-item">Coach-Attested Film</div>
+      <div class="trust-item">Identity-Verified Recruiters</div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PROBLEM ==================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">The recruiting reality</span>
+      <h2>Talent gets you noticed.<br/><span style="color:var(--text-dim);">Readiness gets you recruited.</span></h2>
+      <p>Most athletes don't lose scholarships over their 40 time — they lose them over a junior-year transcript, a missed core course, or one wrong email. ScholarPath is built around the part recruiting services have ignored: <em>actually being ready.</em></p>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card" data-animate>
+        <div class="feature-icon amber">!</div>
+        <h3>Eligibility, not just exposure</h3>
+        <p>Real-time tracking of NCAA, NAIA, and JUCO core-course pace with predictive forecasts before grades are final.</p>
+      </div>
+      <div class="card" data-animate>
+        <div class="feature-icon blue">✓</div>
+        <h3>Verified beats viral</h3>
+        <p>Film and stats are coach- or event-attested. Recruiters trust what they see because they can see <em>who confirmed it</em>.</p>
+      </div>
+      <div class="card" data-animate>
+        <div class="feature-icon purple">✦</div>
+        <h3>The whole athlete</h3>
+        <p>Academics, character, leadership, communication, wellness — recruiters want all of it. We help you build all of it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>From freshman year to signing day.</h2>
+      <p>One platform that grows with the athlete — through every season, every grading period, every recruiting window.</p>
+    </div>
+
+    <div class="grid grid-2" style="gap:3rem; align-items:flex-start;">
+      <div class="card card-elevated" data-animate>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div>
+              <h3>Build a credible profile</h3>
+              <p>AI auto-tags your film. Coaches attest your stats. Your transcript and eligibility status sync automatically. You don't fake it — the platform proves it.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div>
+              <h3>Stay academically eligible</h3>
+              <p>Real-time core-course tracking, predictive GPA modeling, and early-warning alerts to athlete, parent, and counselor before it's too late to fix.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div>
+              <h3>Reach the right coaches</h3>
+              <p>AI-drafted, athlete-edited outreach. NCAA-compliant messaging windows. A college matching engine that ranks fit — not just brand.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div>
+              <h3>Decide with clarity</h3>
+              <p>Side-by-side offer comparison, true 4-year net cost, and a values-based decision planner. Sign with confidence.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-animate>
+        <h3 style="margin-bottom:1rem;">Recruiting Ready Checklist</h3>
+        <p class="text-dim mb-3">14 items that turn an athlete from "interested" to <em>scholarship-ready</em>. Recruiters see your status — green to red — at a glance.</p>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border); display:flex; gap:0.7rem; align-items:center;"><span class="badge badge-verified">✓</span> Profile 100% complete with verified contact</li>
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border); display:flex; gap:0.7rem; align-items:center;"><span class="badge badge-verified">✓</span> Highlight reel uploaded and AI-tagged</li>
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border); display:flex; gap:0.7rem; align-items:center;"><span class="badge badge-verified">✓</span> NCAA / NAIA Eligibility Center registered</li>
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border); display:flex; gap:0.7rem; align-items:center;"><span class="badge badge-verified">✓</span> Core-course pace on track</li>
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border); display:flex; gap:0.7rem; align-items:center;"><span class="badge badge-amber">○</span> Combine or showcase performance logged</li>
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border); display:flex; gap:0.7rem; align-items:center;"><span class="badge badge-amber">○</span> Coach reference on file</li>
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border); display:flex; gap:0.7rem; align-items:center;"><span class="badge">○</span> Outreach sent to 10+ target schools</li>
+          <li style="padding:0.6rem 0; display:flex; gap:0.7rem; align-items:center;"><span class="badge">○</span> Character &amp; coachability evaluation complete</li>
+        </ul>
+        <a class="btn btn-secondary mt-3" href="athlete-dashboard.html">See full checklist →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FEATURES ==================== -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Everything in one place</span>
+      <h2>State-of-the-art, athlete-first.</h2>
+      <p>The features below replace 6 different services families typically pay for separately — recruiting profile, video editor, eligibility tracker, outreach coach, and college matching.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="card feature" data-animate>
+        <div class="feature-icon">▶</div>
+        <h3>AI Highlight Builder</h3>
+        <p>Computer vision detects key plays and auto-edits a 90-second reel. You polish; we do the heavy lifting.</p>
+      </div>
+      <div class="card feature" data-animate>
+        <div class="feature-icon blue">⚡</div>
+        <h3>Verified Stats Dashboard</h3>
+        <p>Coach-attested or event-verified — every metric carries a trust badge recruiters can rely on.</p>
+      </div>
+      <div class="card feature" data-animate>
+        <div class="feature-icon amber">📊</div>
+        <h3>Eligibility Forecasting</h3>
+        <p>Predictive modeling on your transcript pace catches problems while they're still fixable.</p>
+      </div>
+      <div class="card feature" data-animate>
+        <div class="feature-icon purple">🎯</div>
+        <h3>AI College Matching</h3>
+        <p>Reach / Target / Likely tiers based on athletic level, academic fit, position need, and net cost.</p>
+      </div>
+      <div class="card feature" data-animate>
+        <div class="feature-icon">✉</div>
+        <h3>Coach Outreach Coach</h3>
+        <p>AI-drafted emails, athlete-edited. Templates by sport, division, and stage. Compliance-aware.</p>
+      </div>
+      <div class="card feature" data-animate>
+        <div class="feature-icon blue">🔍</div>
+        <h3>Searchable for Recruiters</h3>
+        <p>Filterable by sport, position, GPA, height, region, eligibility, and verified-only — recruiters find you fast.</p>
+      </div>
+      <div class="card feature" data-animate>
+        <div class="feature-icon amber">💬</div>
+        <h3>Voice Interview Practice</h3>
+        <p>Mock coach interviews scored on clarity, content, and confidence — most athletes have never been interviewed before.</p>
+      </div>
+      <div class="card feature" data-animate>
+        <div class="feature-icon purple">💰</div>
+        <h3>Offer Comparison</h3>
+        <p>Side-by-side 4-year net cost across athletic, academic, and need-based aid. The truth, without the spin.</p>
+      </div>
+      <div class="card feature" data-animate>
+        <div class="feature-icon">🛡</div>
+        <h3>Built-in Safety</h3>
+        <p>Identity-verified recruiters, parental consent flows, audit-logged messaging, and abuse reporting at every level.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ROLES ==================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Built for the whole program</span>
+      <h2>One platform. Eight roles. Zero confusion.</h2>
+    </div>
+
+    <div class="grid grid-4">
+      <div class="card" data-animate>
+        <h3 style="font-size:1rem;">Athletes</h3>
+        <p style="font-size:0.9rem; color:var(--text-dim);">Build your recruiting identity, track eligibility, develop skills, and own your outreach.</p>
+        <a class="btn btn-ghost btn-sm mt-2" href="athlete-dashboard.html" style="padding-left:0;">Open dashboard →</a>
+      </div>
+      <div class="card" data-animate>
+        <h3 style="font-size:1rem;">Parents</h3>
+        <p style="font-size:0.9rem; color:var(--text-dim);">Transparency, financial-aid education, scam protection, and a calmer way to support your athlete.</p>
+        <a class="btn btn-ghost btn-sm mt-2" href="subscription.html" style="padding-left:0;">Family plan →</a>
+      </div>
+      <div class="card" data-animate>
+        <h3 style="font-size:1rem;">High School Coaches</h3>
+        <p style="font-size:0.9rem; color:var(--text-dim);">Roster management, attestation, and team-wide recruiting reports for your AD.</p>
+      </div>
+      <div class="card" data-animate>
+        <h3 style="font-size:1rem;">College Recruiters</h3>
+        <p style="font-size:0.9rem; color:var(--text-dim);">Verified data, fast filtering, watchlists, and roster-need matching.</p>
+        <a class="btn btn-ghost btn-sm mt-2" href="recruiter-portal.html" style="padding-left:0;">Open portal →</a>
+      </div>
+      <div class="card" data-animate>
+        <h3 style="font-size:1rem;">Athletic Directors</h3>
+        <p style="font-size:0.9rem; color:var(--text-dim);">Program-wide recruitment, scholarship dollars, and academic eligibility trends.</p>
+      </div>
+      <div class="card" data-animate>
+        <h3 style="font-size:1rem;">Counselors</h3>
+        <p style="font-size:0.9rem; color:var(--text-dim);">Core-course completion, GPA risk, and graduation requirements alongside athletic obligations.</p>
+        <a class="btn btn-ghost btn-sm mt-2" href="eligibility-tracker.html" style="padding-left:0;">Eligibility →</a>
+      </div>
+      <div class="card" data-animate>
+        <h3 style="font-size:1rem;">Club Coaches</h3>
+        <p style="font-size:0.9rem; color:var(--text-dim);">Multi-team film, verified stats, and showcase exposure across organizations.</p>
+      </div>
+      <div class="card" data-animate>
+        <h3 style="font-size:1rem;">Trainers</h3>
+        <p style="font-size:0.9rem; color:var(--text-dim);">Combine data, workload, injury-risk indicators, and progression analytics tied to each profile.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PRICING PREVIEW ==================== -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Pricing</span>
+      <h2>Fair, modern, transparent.</h2>
+      <p>Free for any athlete who needs the basics. Pay for what makes a real difference: AI tools, deeper insight, family coverage, or helping a teammate who can't build their own profile.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="plan" data-animate>
+        <div class="plan-name">Spark</div>
+        <div class="plan-tag">Free forever — for any high school athlete.</div>
+        <div class="plan-price"><span class="amt">$0</span><span class="per">/ mo</span></div>
+        <div class="plan-annual">No card required</div>
+        <ul class="plan-features">
+          <li>Full athlete profile</li>
+          <li>Eligibility status</li>
+          <li>Up to 3 highlight uploads</li>
+          <li>Recruiter visibility</li>
+        </ul>
+        <a class="btn btn-secondary btn-full" href="subscription.html">Start free</a>
+      </div>
+
+      <div class="plan plan-popular" data-animate>
+        <div class="plan-name">Athlete Pro</div>
+        <div class="plan-tag">Active recruits with serious goals.</div>
+        <div class="plan-price"><span class="amt">$24</span><span class="per">/ mo</span></div>
+        <div class="plan-annual">or $229 / yr — save $59</div>
+        <ul class="plan-features">
+          <li>Everything in Spark</li>
+          <li>AI highlight builder</li>
+          <li>AI college matching</li>
+          <li>Coach outreach toolkit</li>
+          <li>Voice interview practice</li>
+          <li>Priority recruiter visibility</li>
+        </ul>
+        <a class="btn btn-primary btn-full" href="subscription.html">Get Athlete Pro</a>
+      </div>
+
+      <div class="plan" data-animate>
+        <div class="plan-name">Family Plan</div>
+        <div class="plan-tag">Up to 4 siblings on one subscription.</div>
+        <div class="plan-price"><span class="amt">$34</span><span class="per">/ mo</span></div>
+        <div class="plan-annual">or $329 / yr</div>
+        <ul class="plan-features">
+          <li>4 Athlete Pro seats</li>
+          <li>Unified parent dashboard</li>
+          <li>Financial aid suite</li>
+          <li>FAFSA preparation</li>
+          <li>Calendar &amp; reminders</li>
+        </ul>
+        <a class="btn btn-secondary btn-full" href="subscription.html">Choose Family</a>
+      </div>
+
+      <div class="plan" data-animate>
+        <div class="plan-name">Student Loader</div>
+        <div class="plan-tag">Help teammates and friends build their profiles.</div>
+        <div class="plan-price"><span class="amt">$9</span><span class="per">/ mo</span></div>
+        <div class="plan-annual">From $89 / yr</div>
+        <ul class="plan-features">
+          <li>Build profiles for peers</li>
+          <li>Athlete &amp; parent consent required</li>
+          <li>Tiered: 3 → 10 → 25 athletes</li>
+          <li>Full activity log</li>
+          <li>Athlete owns the profile</li>
+        </ul>
+        <a class="btn btn-secondary btn-full" href="subscription.html#loader">Loader Tiers</a>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="subscription.html" class="btn btn-ghost">Compare all plans →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CTA ==================== -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner" data-animate>
+      <span class="eyebrow" style="justify-content:center;">Mission</span>
+      <h2 class="mt-2">Preparation. Exposure. Eligibility. Character. Fit.</h2>
+      <p>We don't promise scholarships. We promise the five things that put one within reach — and give every athlete an honest, structured path from high school to the right college program.</p>
+      <div style="display:flex; gap:0.8rem; justify-content:center; flex-wrap:wrap;">
+        <a class="btn btn-primary btn-lg" href="subscription.html">Create your profile</a>
+        <a class="btn btn-secondary btn-lg" href="athlete-dashboard.html">Tour the platform</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <span class="brand-mark">SP</span>
+          <span>ScholarPath Athletics</span>
+        </a>
+        <p class="text-dim mt-2" style="font-size:0.9rem; max-width:36ch;">Built to be Recruited. Built to be Ready. The modern scholarship-readiness platform for high school student-athletes.</p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="athlete-dashboard.html">Athlete Dashboard</a></li>
+          <li><a href="athlete-profile.html">Profile</a></li>
+          <li><a href="eligibility-tracker.html">Eligibility</a></li>
+          <li><a href="recruiter-portal.html">Recruiter Portal</a></li>
+          <li><a href="subscription.html">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>For</h4>
+        <ul>
+          <li><a href="#">Athletes</a></li>
+          <li><a href="#">Parents</a></li>
+          <li><a href="#">High School Coaches</a></li>
+          <li><a href="#">Recruiters</a></li>
+          <li><a href="#">Athletic Directors</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">NCAA Eligibility 101</a></li>
+          <li><a href="#">FAFSA Guide</a></li>
+          <li><a href="#">NIL Education</a></li>
+          <li><a href="#">Recruiting Calendar</a></li>
+          <li><a href="#">Equity Access</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Trust &amp; Safety</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span data-year>2026</span> ScholarPath Athletics. Not affiliated with the NCAA, NAIA, or NJCAA.</div>
+      <div>SOC 2 · FERPA-aligned · COPPA-compliant</div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script src="data-loader.js"></script>
+</body>
+</html>

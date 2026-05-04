@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>College Coach Directory — ScholarPath Athletics</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+    <ul class="nav-links">
+      <li><a href="athlete-dashboard.html">Dashboard</a></li>
+      <li><a href="pipeline.html">Pipeline</a></li>
+      <li><a href="coach-directory.html">Coaches</a></li>
+      <li><a href="camps.html">Camps</a></li>
+      <li><a href="visits.html">Visits</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container" style="padding:2rem 1.5rem 4rem;">
+  <div class="app-topbar">
+    <div>
+      <h1>College Coach Directory</h1>
+      <p class="text-dim mt-1">Verified contacts for college coaches by sport, division, and region. One-click adds them to your outreach pipeline.</p>
+    </div>
+    <span class="badge badge-verified"><span class="dot dot-green"></span> Verified contacts</span>
+  </div>
+
+  <!-- Filters -->
+  <div class="card mb-4">
+    <div class="grid grid-4" style="gap:0.75rem; align-items:flex-end;">
+      <div>
+        <label class="text-dim" style="font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Search</label>
+        <input id="q" class="range-input" placeholder="School or coach name" style="width:100%;" />
+      </div>
+      <div>
+        <label class="text-dim" style="font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Sport</label>
+        <select id="sport" class="range-input" style="width:100%;">
+          <option value="soccer">Women's Soccer</option>
+          <option value="basketball">Basketball</option>
+          <option value="football">Football</option>
+          <option value="baseball">Baseball</option>
+          <option value="">All sports</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-dim" style="font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Division</label>
+        <select id="division" class="range-input" style="width:100%;">
+          <option value="">All divisions</option>
+          <option>D-I</option><option>D-II</option><option>D-III</option><option>NAIA</option><option>JUCO</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-dim" style="font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Region</label>
+        <select id="region" class="range-input" style="width:100%;">
+          <option value="">All regions</option>
+          <option>West</option><option>Midwest</option><option>South</option><option>Northeast</option><option>Southeast</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div id="meta" class="text-dim mb-3" style="font-size:0.92rem;">Loading…</div>
+
+  <!-- Results -->
+  <div id="results" style="display:flex; flex-direction:column; gap:0.75rem;"></div>
+</main>
+
+<script src="app.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+const ATHLETE_ID = 1;
+
+async function load() {
+  const params = new URLSearchParams();
+  for (const k of ['q','sport','division','region']) {
+    const v = $(k).value.trim();
+    if (v) params.set(k, v);
+  }
+  $('meta').textContent = 'Searching…';
+  try {
+    const r = await fetch('/api/coaches?' + params.toString());
+    const data = await r.json();
+    $('meta').textContent = `${data.count} coach${data.count === 1 ? '' : 'es'} match`;
+    const rows = data.coaches.map(c => `
+      <article class="card" style="display:grid; grid-template-columns:auto 1fr auto; gap:1.2rem; align-items:center; padding:1.1rem 1.4rem;">
+        <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,var(--blue-500),var(--navy-700)); display:grid; place-items:center; font-weight:700; color:white; font-size:0.95rem;">
+          ${c.full_name.split(/\s+/).map(p => p[0]).slice(0,2).join('')}
+        </div>
+        <div>
+          <div style="font-weight:700; font-size:1rem;">${c.full_name}</div>
+          <div class="text-dim" style="font-size:0.85rem;">${c.title} · <strong style="color:var(--text);">${c.school_name}</strong></div>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem;">
+            ${c.division ? `<span class="badge">${c.division}</span>` : ''}
+            ${c.state ? `<span class="badge">${c.state} · ${c.region}</span>` : ''}
+            ${c.conference ? `<span class="badge">${c.conference}</span>` : ''}
+            ${c.recruiting_areas ? `<span class="badge" style="font-size:0.7rem;">Recruits: ${c.recruiting_areas}</span>` : ''}
+          </div>
+          <div style="display:flex; gap:1rem; margin-top:0.6rem; font-size:0.85rem; color:var(--text-dim);">
+            ${c.email ? `<a href="mailto:${c.email}" style="color:var(--green-500);">✉ ${c.email}</a>` : ''}
+            ${c.phone ? `<span>📞 ${c.phone}</span>` : ''}
+            ${c.twitter_handle ? `<span>🐦 ${c.twitter_handle}</span>` : ''}
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:0.4rem;">
+          <button class="btn btn-primary btn-sm" data-add="${c.id}" data-school='${c.school_name}' data-div='${c.division}' data-state='${c.state}' data-region='${c.region}'>+ Pipeline</button>
+          <button class="btn btn-secondary btn-sm" data-draft="${c.id}" data-school='${c.school_name}' data-div='${c.division}'>AI draft</button>
+        </div>
+      </article>
+    `).join('');
+    $('results').innerHTML = rows || '<div class="card text-dim text-center">No coaches matched. Try widening the filters.</div>';
+    wireActions();
+  } catch (e) {
+    $('meta').textContent = 'Failed to load coaches.';
+    $('results').innerHTML = '';
+  }
+}
+
+function wireActions() {
+  document.querySelectorAll('[data-add]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const school = btn.dataset.school;
+      btn.disabled = true; btn.textContent = 'Adding…';
+      try {
+        const r = await fetch(`/api/pipeline/${ATHLETE_ID}`, {
+          method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ school_name: school, division: btn.dataset.div, state: btn.dataset.state, region: btn.dataset.region, stage: 'researching' })
+        });
+        if (r.status === 409) { btn.textContent = '✓ Already in pipeline'; }
+        else if (r.ok) { btn.textContent = '✓ Added'; btn.style.background = 'var(--green-500)'; btn.style.color = 'white'; }
+        else if (r.status === 401) { window.location.href = 'login.html'; return; }
+      } catch (_) { btn.textContent = 'Failed'; }
+    });
+  });
+
+  document.querySelectorAll('[data-draft]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const school = btn.dataset.school;
+      btn.disabled = true; btn.textContent = 'Drafting…';
+      try {
+        const r = await fetch('/api/ai/outreach-draft', {
+          method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ athlete_id: ATHLETE_ID, school: { name: school, division: btn.dataset.div } })
+        });
+        if (r.status === 401) { window.location.href = 'login.html'; return; }
+        const data = await r.json();
+        showDraftModal(data);
+      } catch (_) { btn.textContent = 'Failed'; }
+      finally { btn.disabled = false; btn.textContent = 'AI draft'; }
+    });
+  });
+}
+
+function showDraftModal(d) {
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:200; display:flex; align-items:center; justify-content:center; padding:1.5rem; backdrop-filter:blur(8px);';
+  overlay.innerHTML = `
+    <div class="card card-elevated" style="max-width:640px; width:100%; max-height:80vh; overflow:auto;">
+      <div class="flex-between mb-3">
+        <h3 style="font-size:1.1rem;">AI-drafted outreach</h3>
+        <button class="btn btn-ghost btn-sm" onclick="this.closest('div[style]').parentElement.remove()">✕</button>
+      </div>
+      <div class="text-dim mb-1" style="font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;">Subject</div>
+      <div style="padding:0.75rem 1rem; background:var(--surface-2); border-radius:var(--radius); font-weight:500; margin-bottom:1rem;">${d.subject || '(no subject)'}</div>
+      <div class="text-dim mb-1" style="font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;">Body</div>
+      <textarea style="width:100%; min-height:240px; padding:1rem; background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius); color:var(--text); font-family:inherit; line-height:1.6;">${(d.body || '').replace(/</g, '&lt;')}</textarea>
+      ${d.tips?.length ? `
+        <div class="text-dim mt-3 mb-1" style="font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;">Edit suggestions</div>
+        <ul style="list-style:none; padding:0;">${d.tips.map(t => `<li style="padding:0.4rem 0; color:var(--text-dim); font-size:0.9rem;">→ ${t}</li>`).join('')}</ul>
+      ` : ''}
+      <p class="text-muted mt-3" style="font-size:0.78rem;">${d.generated_with === 'claude-sonnet-4-6' ? '✓ Drafted by Claude Sonnet 4.6 with prompt caching' : 'Generated with template fallback. Set ANTHROPIC_API_KEY to enable Claude.'}</p>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', e => { if (e.target === overlay) overlay.remove(); });
+}
+
+['q','sport','division','region'].forEach(k => $(k).addEventListener('change', load));
+$('q').addEventListener('input', () => clearTimeout(window._t) || (window._t = setTimeout(load, 300)));
+load();
+</script>
+
+active<activenactiveaactivevactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activenactiveaactivevactive"active>active<activedactiveiactivevactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activenactiveaactivevactive-activeiactivenactivenactiveeactiveractive"active>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeDactiveAactiveSactiveHactive"active activehactiveractiveeactivefactive=active"activeaactivetactivehactivelactiveeactivetactiveeactive-activedactiveaactivesactivehactivebactiveoactiveaactiveractivedactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active⌂active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeHactiveoactivemactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activePactiveIactivePactiveEactive"active activehactiveractiveeactivefactive=active"activepactiveiactivepactiveeactivelactiveiactivenactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active▦active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activePactiveiactivepactiveeactivelactiveiactivenactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeIactiveNactiveTactive"active activehactiveractiveeactivefactive=active"activeiactivenactivetactiveeactiveractivevactiveiactiveeactivewactive-activepactiveractiveaactivecactivetactiveiactivecactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active🎙active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeIactivenactivetactiveeactiveractivevactiveiactiveeactivewactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeTactiveIactiveMactiveEactive"active activehactiveractiveeactivefactive=active"activetactiveiactivemactiveeactivelactiveiactivenactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active🗺active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeTactiveiactivemactiveeactivelactiveiactivenactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activePactiveRactiveOactiveFactive"active activehactiveractiveeactivefactive=active"activeaactivetactivehactivelactiveeactivetactiveeactive-activepactiveractiveoactivefactiveiactivelactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active●active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activePactiveractiveoactivefactiveiactivelactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<active/activedactiveiactivevactive>active<active/activenactiveaactivevactive>
+</body>
+</html>

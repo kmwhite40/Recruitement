@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recruiter Portal — ScholarPath Athletics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231E7A4D'/%3E%3Cpath d='M9 22L14 14L18 17L23 9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath <span style="color:var(--text-muted); font-weight:500;">/ Recruiter</span></span></a>
+    <ul class="nav-links">
+      <li><a href="recruiter-portal.html">Search</a></li>
+      <li><a href="#">Watchlists</a></li>
+      <li><a href="#">Messages</a></li>
+      <li><a href="#">Events</a></li>
+      <li><a href="#">Reports</a></li>
+    </ul>
+    <div class="nav-cta">
+      <span class="badge badge-verified"><span class="dot dot-green"></span> Verified Recruiter</span>
+      <a class="btn btn-secondary btn-sm" href="#">Coach Davis ▾</a>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main class="container" style="padding-top:2rem; padding-bottom:4rem;">
+  <div class="app-topbar">
+    <div>
+      <h1 style="font-size:clamp(1.5rem,3vw,2rem);">Find athletes that fit your roster.</h1>
+      <p class="text-dim mt-1">Verified film. Real eligibility. Filterable by every variable that matters to your program.</p>
+    </div>
+    <div style="display:flex; gap:0.6rem; align-items:center;">
+      <input class="search-input" placeholder="Search by name, school, or club" style="width:300px;" />
+      <button class="btn btn-secondary btn-sm">Save search</button>
+    </div>
+  </div>
+
+  <!-- Quick filter chips -->
+  <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1.5rem;">
+    <span class="badge" style="padding:0.5rem 0.9rem;">Sport: Soccer (W)</span>
+    <span class="badge" style="padding:0.5rem 0.9rem;">Class: 2027</span>
+    <span class="badge badge-verified" style="padding:0.5rem 0.9rem;">Verified-only</span>
+    <span class="badge" style="padding:0.5rem 0.9rem;">Region: West</span>
+    <span class="badge" style="padding:0.5rem 0.9rem;">Position: F / M</span>
+    <span class="badge" style="padding:0.5rem 0.9rem;">GPA ≥ 3.3</span>
+    <button class="btn btn-ghost btn-sm" style="padding:0.4rem 0.8rem;">+ Add filter</button>
+    <button class="btn btn-ghost btn-sm" style="padding:0.4rem 0.8rem; color:var(--red-500);">Clear all</button>
+  </div>
+
+  <div class="recruiter-shell">
+    <!-- FILTER PANEL -->
+    <aside class="filter-panel">
+      <h4 style="margin-bottom:0.5rem;">Filters</h4>
+
+      <div class="filter-group">
+        <h4>Sport</h4>
+        <label class="checkbox"><input type="checkbox" checked /> Women's Soccer</label>
+        <label class="checkbox"><input type="checkbox" /> Football</label>
+        <label class="checkbox"><input type="checkbox" /> Basketball</label>
+        <label class="checkbox"><input type="checkbox" /> Baseball</label>
+        <label class="checkbox"><input type="checkbox" /> Volleyball</label>
+        <label class="checkbox"><input type="checkbox" /> Track &amp; Field</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Position</h4>
+        <label class="checkbox"><input type="checkbox" checked /> Forward</label>
+        <label class="checkbox"><input type="checkbox" checked /> Midfielder</label>
+        <label class="checkbox"><input type="checkbox" /> Defender</label>
+        <label class="checkbox"><input type="checkbox" /> Goalkeeper</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Class year</h4>
+        <label class="checkbox"><input type="checkbox" /> 2026</label>
+        <label class="checkbox"><input type="checkbox" checked /> 2027</label>
+        <label class="checkbox"><input type="checkbox" /> 2028</label>
+        <label class="checkbox"><input type="checkbox" /> 2029</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Academics</h4>
+        <div style="display:flex; gap:0.5rem;">
+          <input class="range-input" placeholder="Min GPA" value="3.3" />
+          <input class="range-input" placeholder="Max GPA" />
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <h4>Physical</h4>
+        <div style="display:flex; gap:0.5rem; margin-bottom:0.5rem;">
+          <input class="range-input" placeholder="Min ht (in)" />
+          <input class="range-input" placeholder="Max ht (in)" />
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <h4>Region</h4>
+        <label class="checkbox"><input type="checkbox" checked /> West</label>
+        <label class="checkbox"><input type="checkbox" /> Midwest</label>
+        <label class="checkbox"><input type="checkbox" /> South</label>
+        <label class="checkbox"><input type="checkbox" /> Northeast</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Eligibility</h4>
+        <label class="checkbox"><input type="checkbox" checked /> NCAA on track</label>
+        <label class="checkbox"><input type="checkbox" /> NAIA cleared</label>
+        <label class="checkbox"><input type="checkbox" /> JUCO eligible</label>
+      </div>
+
+      <div class="filter-group">
+        <h4>Trust</h4>
+        <label class="checkbox"><input type="checkbox" checked /> Verified film only</label>
+        <label class="checkbox"><input type="checkbox" /> Coach-attested stats</label>
+        <label class="checkbox"><input type="checkbox" /> Event-verified results</label>
+      </div>
+
+      <button class="btn btn-primary btn-full mt-2">Apply</button>
+    </aside>
+
+    <!-- RESULTS -->
+    <section>
+      <div class="flex-between mb-3">
+        <div class="text-dim" style="font-size:0.92rem;"><strong style="color:var(--text);">142</strong> verified athletes match your criteria</div>
+        <div style="display:flex; gap:0.6rem; align-items:center;">
+          <select class="range-input" style="width:auto;">
+            <option>Sort: Best fit</option>
+            <option>Sort: Most recent film</option>
+            <option>Sort: GPA (high to low)</option>
+            <option>Sort: Verified score</option>
+          </select>
+          <button class="btn btn-secondary btn-sm">Compare (0)</button>
+        </div>
+      </div>
+
+      <div class="athlete-grid">
+        <!-- Card 1 -->
+        <article class="athlete-card">
+          <div class="athlete-thumb" style="background:linear-gradient(135deg,#1E7A4D,#0B1A2B);">
+            <span style="font-size:3.5rem; opacity:0.6;">⚽</span>
+            <span class="badge badge-verified verified"><span class="dot dot-green"></span> Verified</span>
+            <span class="grad-year">2027</span>
+          </div>
+          <div class="athlete-info">
+            <div class="flex-between"><div>
+              <div class="name">Maya Rodriguez</div>
+              <div class="meta">Forward · 5'7" · Lincoln HS, FL</div>
+            </div><span class="badge badge-verified" style="font-size:0.7rem;">94% fit</span></div>
+            <div class="athlete-stats">
+              <div class="s"><div class="lbl">GPA</div><div class="val">3.74</div></div>
+              <div class="s"><div class="lbl">Goals</div><div class="val">22</div></div>
+              <div class="s"><div class="lbl">Sprint</div><div class="val">4.62</div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="athlete-card">
+          <div class="athlete-thumb" style="background:linear-gradient(135deg,#3B82F6,#0B1A2B);">
+            <span style="font-size:3.5rem; opacity:0.6;">⚽</span>
+            <span class="badge badge-verified verified"><span class="dot dot-green"></span> Verified</span>
+            <span class="grad-year">2027</span>
+          </div>
+          <div class="athlete-info">
+            <div class="flex-between"><div>
+              <div class="name">Jordan Patel</div>
+              <div class="meta">Midfielder · 5'9" · Bishop Carroll, CA</div>
+            </div><span class="badge badge-verified" style="font-size:0.7rem;">91% fit</span></div>
+            <div class="athlete-stats">
+              <div class="s"><div class="lbl">GPA</div><div class="val">3.91</div></div>
+              <div class="s"><div class="lbl">Assists</div><div class="val">18</div></div>
+              <div class="s"><div class="lbl">Pass %</div><div class="val">87</div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="athlete-card">
+          <div class="athlete-thumb" style="background:linear-gradient(135deg,#8B5CF6,#0B1A2B);">
+            <span style="font-size:3.5rem; opacity:0.6;">⚽</span>
+            <span class="badge badge-amber verified">Coach-Attested</span>
+            <span class="grad-year">2027</span>
+          </div>
+          <div class="athlete-info">
+            <div class="flex-between"><div>
+              <div class="name">Sienna Brooks</div>
+              <div class="meta">Forward · 5'6" · West Linn, OR</div>
+            </div><span class="badge badge-blue" style="font-size:0.7rem;">88% fit</span></div>
+            <div class="athlete-stats">
+              <div class="s"><div class="lbl">GPA</div><div class="val">3.55</div></div>
+              <div class="s"><div class="lbl">Goals</div><div class="val">19</div></div>
+              <div class="s"><div class="lbl">Vert</div><div class="val">23"</div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="athlete-card">
+          <div class="athlete-thumb" style="background:linear-gradient(135deg,#F4A300,#0B1A2B);">
+            <span style="font-size:3.5rem; opacity:0.6;">⚽</span>
+            <span class="badge badge-verified verified"><span class="dot dot-green"></span> Verified</span>
+            <span class="grad-year">2027</span>
+          </div>
+          <div class="athlete-info">
+            <div class="flex-between"><div>
+              <div class="name">Alex Nguyen</div>
+              <div class="meta">Midfielder · 5'8" · Mountain View, WA</div>
+            </div><span class="badge badge-verified" style="font-size:0.7rem;">86% fit</span></div>
+            <div class="athlete-stats">
+              <div class="s"><div class="lbl">GPA</div><div class="val">4.12</div></div>
+              <div class="s"><div class="lbl">Assists</div><div class="val">14</div></div>
+              <div class="s"><div class="lbl">Pass %</div><div class="val">82</div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="athlete-card">
+          <div class="athlete-thumb" style="background:linear-gradient(135deg,#2BB673,#0B1A2B);">
+            <span style="font-size:3.5rem; opacity:0.6;">⚽</span>
+            <span class="badge badge-verified verified"><span class="dot dot-green"></span> Verified</span>
+            <span class="grad-year">2027</span>
+          </div>
+          <div class="athlete-info">
+            <div class="flex-between"><div>
+              <div class="name">Camila Torres</div>
+              <div class="meta">Forward · 5'5" · Liberty HS, AZ</div>
+            </div><span class="badge badge-verified" style="font-size:0.7rem;">83% fit</span></div>
+            <div class="athlete-stats">
+              <div class="s"><div class="lbl">GPA</div><div class="val">3.42</div></div>
+              <div class="s"><div class="lbl">Goals</div><div class="val">25</div></div>
+              <div class="s"><div class="lbl">Sprint</div><div class="val">4.58</div></div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="athlete-card">
+          <div class="athlete-thumb" style="background:linear-gradient(135deg,#E04A5C,#0B1A2B);">
+            <span style="font-size:3.5rem; opacity:0.6;">⚽</span>
+            <span class="badge verified">Self-Reported</span>
+            <span class="grad-year">2028</span>
+          </div>
+          <div class="athlete-info">
+            <div class="flex-between"><div>
+              <div class="name">Riley Carter</div>
+              <div class="meta">Forward · 5'7" · Skyline HS, CO</div>
+            </div><span class="badge" style="font-size:0.7rem;">79% fit</span></div>
+            <div class="athlete-stats">
+              <div class="s"><div class="lbl">GPA</div><div class="val">3.28</div></div>
+              <div class="s"><div class="lbl">Goals</div><div class="val">16</div></div>
+              <div class="s"><div class="lbl">Vert</div><div class="val">21"</div></div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div style="text-align:center; margin-top:2.5rem;">
+        <button class="btn btn-secondary">Load 24 more</button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script src="app.js"></script>
+<script src="data-loader.js"></script>
+</body>
+</html>

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coach Dashboard — ScholarPath Athletics</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath <span style="color:var(--text-muted); font-weight:500;">/ Coach</span></span></a>
+    <ul class="nav-links">
+      <li><a href="coach-dashboard.html">Roster</a></li>
+      <li><a href="#">Attestation Queue</a></li>
+      <li><a href="#">Reports</a></li>
+    </ul>
+    <div class="nav-cta">
+      <span class="badge badge-verified"><span class="dot dot-green"></span> Verified Coach</span>
+      <a class="btn btn-secondary btn-sm" href="#">Coach Williams ▾</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container" style="padding:2rem 1.5rem 4rem;">
+  <div class="app-topbar">
+    <div>
+      <h1>Lincoln HS · Women's Soccer</h1>
+      <p class="text-dim mt-1">Manage your roster, attest stats, verify film, and report scholarship outcomes to the AD.</p>
+    </div>
+    <div style="display:flex; gap:0.6rem;">
+      <button class="btn btn-secondary btn-sm">Export AD report</button>
+      <button class="btn btn-primary btn-sm">+ Add athlete</button>
+    </div>
+  </div>
+
+  <!-- Program tiles -->
+  <div class="stat-row mb-4">
+    <div class="stat-tile">
+      <div class="lbl">Roster</div>
+      <div class="val">22</div>
+      <div class="delta">all profiles claimed</div>
+    </div>
+    <div class="stat-tile">
+      <div class="lbl">Recruiting Ready</div>
+      <div class="val" style="color:var(--green-500);">8</div>
+      <div class="delta">+2 this term</div>
+    </div>
+    <div class="stat-tile">
+      <div class="lbl">Pending Attestation</div>
+      <div class="val" style="color:var(--amber-500);">5</div>
+      <div class="delta">action needed</div>
+    </div>
+    <div class="stat-tile">
+      <div class="lbl">Scholarship Dollars</div>
+      <div class="val mono">$214K</div>
+      <div class="delta">commitments to date</div>
+    </div>
+  </div>
+
+  <div class="grid grid-2" style="gap:1.5rem;">
+    <!-- Attestation queue -->
+    <div class="card">
+      <div class="flex-between mb-3">
+        <h3 style="font-size:1.05rem;">Attestation Queue</h3>
+        <span class="badge badge-amber">5 pending</span>
+      </div>
+      <p class="text-dim mb-3" style="font-size:0.9rem;">Stats and films your athletes uploaded. One-tap approve to publish them as coach-attested.</p>
+
+      <div style="display:flex; flex-direction:column; gap:0.6rem;">
+        <div class="task">
+          <div class="task-icon">📊</div>
+          <div>
+            <h4>Maya Rodriguez · 22 goals (junior season)</h4>
+            <p>Self-reported · matches game logs</p>
+          </div>
+          <button class="btn btn-primary btn-sm" data-attest="stat" data-athlete="1">Approve</button>
+        </div>
+        <div class="task">
+          <div class="task-icon blue">▶</div>
+          <div>
+            <h4>Camila Torres · vs. Liberty HS full game</h4>
+            <p>Uploaded 2 days ago · 90 min</p>
+          </div>
+          <button class="btn btn-primary btn-sm" data-attest="film" data-athlete="6">Approve</button>
+        </div>
+        <div class="task">
+          <div class="task-icon">📊</div>
+          <div>
+            <h4>Sienna Brooks · 19 goals + 8 assists</h4>
+            <p>Self-reported · 2026-27 season</p>
+          </div>
+          <button class="btn btn-primary btn-sm">Approve</button>
+        </div>
+        <div class="task">
+          <div class="task-icon blue">▶</div>
+          <div>
+            <h4>Alex Nguyen · skills reel</h4>
+            <p>Uploaded today · 75 sec</p>
+          </div>
+          <button class="btn btn-primary btn-sm">Approve</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Roster table -->
+    <div class="card">
+      <div class="flex-between mb-3">
+        <h3 style="font-size:1.05rem;">Roster (top 8 by readiness)</h3>
+        <a href="#" class="text-dim" style="font-size:0.85rem;">View all 22 →</a>
+      </div>
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr><th style="text-align:left; padding:0.5rem 0.4rem; font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted);">Athlete</th>
+              <th style="text-align:right; padding:0.5rem 0.4rem; font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted);">GPA</th>
+              <th style="text-align:right; padding:0.5rem 0.4rem; font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted);">Score</th>
+              <th style="text-align:right; padding:0.5rem 0.4rem; font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--text-muted);">Status</th></tr>
+        </thead>
+        <tbody id="rosterBody">
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.7rem 0.4rem;">Maya Rodriguez</td><td class="mono" style="text-align:right;">3.74</td><td class="mono" style="text-align:right; color:var(--green-500);">82</td><td style="text-align:right;"><span class="badge badge-verified">Ready</span></td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.7rem 0.4rem;">Alex Nguyen</td><td class="mono" style="text-align:right;">4.12</td><td class="mono" style="text-align:right; color:var(--green-500);">80</td><td style="text-align:right;"><span class="badge badge-verified">Ready</span></td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.7rem 0.4rem;">Jordan Patel</td><td class="mono" style="text-align:right;">3.91</td><td class="mono" style="text-align:right;">78</td><td style="text-align:right;"><span class="badge badge-blue">In Comm</span></td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.7rem 0.4rem;">Sienna Brooks</td><td class="mono" style="text-align:right;">3.55</td><td class="mono" style="text-align:right;">75</td><td style="text-align:right;"><span class="badge">Building</span></td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.7rem 0.4rem;">Camila Torres</td><td class="mono" style="text-align:right;">3.42</td><td class="mono" style="text-align:right;">72</td><td style="text-align:right;"><span class="badge badge-amber">Acad watch</span></td></tr>
+          <tr style="border-top:1px solid var(--border);"><td style="padding:0.7rem 0.4rem;">Riley Carter</td><td class="mono" style="text-align:right;">3.28</td><td class="mono" style="text-align:right;">65</td><td style="text-align:right;"><span class="badge">Building</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Eligibility heatmap -->
+    <div class="card">
+      <div class="flex-between mb-3">
+        <h3 style="font-size:1.05rem;">Roster eligibility</h3>
+        <span class="badge badge-verified">87% on track</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(11, 1fr); gap:4px;">
+        <!-- 22 cells, one per athlete -->
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;" title="Maya R · green"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--amber-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--amber-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--red-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--amber-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+        <span style="aspect-ratio:1; background:var(--green-500); border-radius:4px;"></span>
+      </div>
+      <div style="display:flex; gap:1.25rem; margin-top:1rem; font-size:0.85rem; color:var(--text-dim);">
+        <div><span class="dot dot-green"></span> Green: 19</div>
+        <div><span class="dot dot-amber"></span> Watch: 3</div>
+        <div><span class="dot dot-red"></span> Red: 1</div>
+      </div>
+    </div>
+
+    <!-- Recent recruiter activity for the program -->
+    <div class="card">
+      <div class="flex-between mb-3">
+        <h3 style="font-size:1.05rem;">Recent recruiter activity (program-wide)</h3>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0.5rem;">
+        <div style="padding:0.7rem 0.85rem; background:var(--surface-2); border-radius:var(--radius); font-size:0.9rem;">
+          <strong>Whitworth (D-III)</strong> watched 4:12 of Maya Rodriguez film · <span class="text-dim">2 hrs ago</span>
+        </div>
+        <div style="padding:0.7rem 0.85rem; background:var(--surface-2); border-radius:var(--radius); font-size:0.9rem;">
+          <strong>Pacific (D-II)</strong> added Jordan Patel to watchlist · <span class="text-dim">today</span>
+        </div>
+        <div style="padding:0.7rem 0.85rem; background:var(--surface-2); border-radius:var(--radius); font-size:0.9rem;">
+          <strong>Southern Oregon (NAIA)</strong> requested film for Sienna Brooks · <span class="text-dim">yesterday</span>
+        </div>
+        <div style="padding:0.7rem 0.85rem; background:var(--surface-2); border-radius:var(--radius); font-size:0.9rem;">
+          <strong>Lewis &amp; Clark (D-III)</strong> opened Alex Nguyen profile · <span class="text-dim">2 days ago</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="app.js"></script>
+<script>
+// One-tap attestation — UI shows immediate optimistic update
+document.querySelectorAll('[data-attest]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.textContent = '✓ Approved';
+    btn.disabled = true;
+    btn.style.background = 'var(--green-500)';
+    btn.style.color = 'white';
+    btn.style.opacity = 0.85;
+    setTimeout(() => {
+      const row = btn.closest('.task');
+      if (row) {
+        row.style.transition = 'all 0.4s var(--ease-out)';
+        row.style.opacity = 0;
+        row.style.transform = 'translateX(40px)';
+        setTimeout(() => row.remove(), 400);
+      }
+    }, 600);
+  });
+});
+</script>
+
+</body>
+</html>

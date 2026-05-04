@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maya Rodriguez · 2027 Forward — ScholarPath Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231E7A4D'/%3E%3Cpath d='M9 22L14 14L18 17L23 9' stroke='white' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+    <ul class="nav-links">
+      <li><a href="athlete-dashboard.html">Dashboard</a></li>
+      <li><a href="athlete-profile.html">Profile</a></li>
+      <li><a href="eligibility-tracker.html">Eligibility</a></li>
+      <li><a href="recruiter-portal.html">Recruiters</a></li>
+    </ul>
+    <div class="nav-cta">
+      <button class="btn btn-secondary btn-sm">Share via QR</button>
+      <button class="btn btn-primary btn-sm">Edit profile</button>
+    </div>
+    <button class="nav-toggle" aria-label="Open menu">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main class="container" style="padding-top:2rem; padding-bottom:4rem;">
+
+  <!-- HERO -->
+  <section class="profile-hero">
+    <div class="profile-hero-grid">
+      <div class="avatar-xl">MR</div>
+      <div>
+        <span class="eyebrow">Class of 2027 · Women's Soccer</span>
+        <h1>Maya Rodriguez</h1>
+        <p class="subline">Forward · 5'7" · Lincoln High School · Tampa, FL</p>
+        <div class="profile-tags">
+          <span class="badge badge-verified"><span class="dot dot-green"></span> Eligibility: On Track</span>
+          <span class="badge badge-verified">✓ Coach-Attested Stats</span>
+          <span class="badge badge-blue">✓ Event-Verified Combine</span>
+          <span class="badge">28 coaches viewing</span>
+        </div>
+      </div>
+      <div class="profile-actions">
+        <button class="btn btn-primary">Save to Watchlist</button>
+        <button class="btn btn-secondary">Request Film</button>
+        <button class="btn btn-secondary">Contact via School</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS ROW -->
+  <div class="stat-row mb-4">
+    <div class="stat-tile">
+      <div class="lbl">GPA (W)</div>
+      <div class="val">3.74</div>
+      <div class="delta">D-I eligible</div>
+    </div>
+    <div class="stat-tile">
+      <div class="lbl">Goals (Junior season)</div>
+      <div class="val">22</div>
+      <div class="delta">in 18 games</div>
+    </div>
+    <div class="stat-tile">
+      <div class="lbl">Sprint (verified)</div>
+      <div class="val">4.62<span style="font-size:0.9rem; color:var(--text-dim); font-weight:500;">s</span></div>
+      <div class="delta">PNW Combine · Mar 2026</div>
+    </div>
+    <div class="stat-tile">
+      <div class="lbl">Vertical</div>
+      <div class="val">23.5<span style="font-size:0.9rem; color:var(--text-dim); font-weight:500;">"</span></div>
+      <div class="delta">Event-verified</div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs" data-tabs>
+    <button class="tab active" data-target="film">Film</button>
+    <button class="tab" data-target="stats">Stats</button>
+    <button class="tab" data-target="academics">Academics</button>
+    <button class="tab" data-target="references">References</button>
+    <button class="tab" data-target="about">About</button>
+  </div>
+
+  <!-- FILM PANEL -->
+  <div data-panel="film">
+    <div class="grid grid-2" style="gap:1.5rem;">
+      <div>
+        <h3 style="font-size:1.1rem; margin-bottom:1rem;">Featured Highlight</h3>
+        <div class="film-frame">
+          <div class="play-btn">▶</div>
+          <div style="position:absolute; bottom:16px; left:16px; right:16px; display:flex; justify-content:space-between; z-index:1;">
+            <span class="badge badge-verified" style="backdrop-filter: blur(6px);"><span class="dot dot-green"></span> AI-tagged</span>
+            <span class="badge" style="background:rgba(0,0,0,0.6); backdrop-filter: blur(6px);">1:32</span>
+          </div>
+        </div>
+        <div style="display:flex; gap:0.5rem; margin-top:1rem; flex-wrap:wrap;">
+          <span class="badge">Senior Year Reel</span>
+          <span class="badge">Goals · 8</span>
+          <span class="badge">Assists · 4</span>
+          <span class="badge">1v1 Wins · 12</span>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:1.1rem; margin-bottom:1rem;">Film Library</h3>
+        <div style="display:flex; flex-direction:column; gap:0.75rem;">
+          <div style="display:flex; gap:0.9rem; align-items:center; padding:0.85rem; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);">
+            <div style="width:80px; height:48px; background:linear-gradient(135deg,var(--navy-700),var(--navy-900)); border-radius:8px; display:grid; place-items:center; font-size:1.2rem; color:var(--text-dim);">▶</div>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.92rem;">vs. Plant HS · Full Game</div>
+              <div style="font-size:0.82rem; color:var(--text-dim);">90 min · Apr 12 · 2 goals · 1 assist</div>
+            </div>
+            <span class="badge badge-verified" style="font-size:0.7rem;">Verified</span>
+          </div>
+          <div style="display:flex; gap:0.9rem; align-items:center; padding:0.85rem; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);">
+            <div style="width:80px; height:48px; background:linear-gradient(135deg,var(--navy-700),var(--navy-900)); border-radius:8px; display:grid; place-items:center; font-size:1.2rem; color:var(--text-dim);">▶</div>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.92rem;">Skills · Ball Control</div>
+              <div style="font-size:0.82rem; color:var(--text-dim);">60 sec · close-control + finishing</div>
+            </div>
+            <span class="badge" style="font-size:0.7rem;">Skills</span>
+          </div>
+          <div style="display:flex; gap:0.9rem; align-items:center; padding:0.85rem; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);">
+            <div style="width:80px; height:48px; background:linear-gradient(135deg,var(--navy-700),var(--navy-900)); border-radius:8px; display:grid; place-items:center; font-size:1.2rem; color:var(--text-dim);">▶</div>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.92rem;">PNW Combine · Athletic Testing</div>
+              <div style="font-size:0.82rem; color:var(--text-dim);">Sprint, vertical, agility · Event-captured</div>
+            </div>
+            <span class="badge badge-blue" style="font-size:0.7rem;">Event</span>
+          </div>
+          <div style="display:flex; gap:0.9rem; align-items:center; padding:0.85rem; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);">
+            <div style="width:80px; height:48px; background:linear-gradient(135deg,var(--navy-700),var(--navy-900)); border-radius:8px; display:grid; place-items:center; font-size:1.2rem; color:var(--text-dim);">▶</div>
+            <div style="flex:1;">
+              <div style="font-weight:600; font-size:0.92rem;">vs. Sickles HS · Full Game</div>
+              <div style="font-size:0.82rem; color:var(--text-dim);">90 min · Mar 28 · 3 goals</div>
+            </div>
+            <span class="badge badge-verified" style="font-size:0.7rem;">Verified</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Performance progression -->
+    <div class="card mt-4">
+      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Performance Progression</h3>
+      <p class="text-dim mb-3" style="font-size:0.9rem;">Sport-specific metrics tracked season over season.</p>
+      <div class="grid grid-3" style="gap:1rem;">
+        <div>
+          <div class="text-dim" style="font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;">Goals per game</div>
+          <div style="font-family:var(--font-mono); font-size:1.4rem; font-weight:700;">1.22</div>
+          <div style="display:flex; gap:3px; height:30px; align-items:flex-end; margin-top:0.4rem;">
+            <div style="flex:1; background:var(--surface-2); border-radius:3px; height:30%;"></div>
+            <div style="flex:1; background:var(--surface-3); border-radius:3px; height:45%;"></div>
+            <div style="flex:1; background:var(--green-500); border-radius:3px; height:75%; opacity:0.7;"></div>
+            <div style="flex:1; background:var(--green-500); border-radius:3px; height:100%;"></div>
+          </div>
+        </div>
+        <div>
+          <div class="text-dim" style="font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;">Sprint speed (40)</div>
+          <div style="font-family:var(--font-mono); font-size:1.4rem; font-weight:700;">4.62s</div>
+          <div style="display:flex; gap:3px; height:30px; align-items:flex-end; margin-top:0.4rem;">
+            <div style="flex:1; background:var(--surface-2); border-radius:3px; height:50%;"></div>
+            <div style="flex:1; background:var(--surface-3); border-radius:3px; height:65%;"></div>
+            <div style="flex:1; background:var(--green-500); border-radius:3px; height:85%; opacity:0.7;"></div>
+            <div style="flex:1; background:var(--green-500); border-radius:3px; height:100%;"></div>
+          </div>
+        </div>
+        <div>
+          <div class="text-dim" style="font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;">1v1 win rate</div>
+          <div style="font-family:var(--font-mono); font-size:1.4rem; font-weight:700;">63%</div>
+          <div style="display:flex; gap:3px; height:30px; align-items:flex-end; margin-top:0.4rem;">
+            <div style="flex:1; background:var(--surface-2); border-radius:3px; height:40%;"></div>
+            <div style="flex:1; background:var(--surface-3); border-radius:3px; height:55%;"></div>
+            <div style="flex:1; background:var(--green-500); border-radius:3px; height:80%; opacity:0.7;"></div>
+            <div style="flex:1; background:var(--green-500); border-radius:3px; height:100%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS PANEL -->
+  <div data-panel="stats" class="hidden">
+    <div class="card">
+      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Career Statistics</h3>
+      <table style="width:100%; border-collapse:collapse;">
+        <thead>
+          <tr style="border-bottom:1px solid var(--border);">
+            <th style="text-align:left; padding:0.8rem 0.5rem; color:var(--text-dim); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase;">Season</th>
+            <th style="text-align:right; padding:0.8rem 0.5rem; color:var(--text-dim); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase;">GP</th>
+            <th style="text-align:right; padding:0.8rem 0.5rem; color:var(--text-dim); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase;">G</th>
+            <th style="text-align:right; padding:0.8rem 0.5rem; color:var(--text-dim); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase;">A</th>
+            <th style="text-align:right; padding:0.8rem 0.5rem; color:var(--text-dim); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase;">SOG</th>
+            <th style="text-align:right; padding:0.8rem 0.5rem; color:var(--text-dim); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase;">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.8rem 0.5rem;">2026 (Junior)</td><td class="mono" style="text-align:right;">18</td><td class="mono" style="text-align:right;">22</td><td class="mono" style="text-align:right;">11</td><td class="mono" style="text-align:right;">62</td><td style="text-align:right;"><span class="badge badge-verified" style="font-size:0.7rem;">Coach</span></td></tr>
+          <tr style="border-bottom:1px solid var(--border);"><td style="padding:0.8rem 0.5rem;">2025 (Sophomore)</td><td class="mono" style="text-align:right;">17</td><td class="mono" style="text-align:right;">14</td><td class="mono" style="text-align:right;">8</td><td class="mono" style="text-align:right;">48</td><td style="text-align:right;"><span class="badge badge-verified" style="font-size:0.7rem;">Coach</span></td></tr>
+          <tr><td style="padding:0.8rem 0.5rem;">2024 (Freshman)</td><td class="mono" style="text-align:right;">15</td><td class="mono" style="text-align:right;">8</td><td class="mono" style="text-align:right;">5</td><td class="mono" style="text-align:right;">31</td><td style="text-align:right;"><span class="badge badge-verified" style="font-size:0.7rem;">Coach</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ACADEMICS PANEL -->
+  <div data-panel="academics" class="hidden">
+    <div class="grid grid-2" style="gap:1.5rem;">
+      <div class="card">
+        <h3 style="font-size:1.1rem; margin-bottom:1rem;">Academic Snapshot</h3>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between;"><span class="text-dim">Cumulative GPA (W)</span><strong class="mono">3.74</strong></li>
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between;"><span class="text-dim">Class rank</span><strong class="mono">42 / 312</strong></li>
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between;"><span class="text-dim">NCAA core complete</span><strong>14 / 16</strong></li>
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between;"><span class="text-dim">Eligibility status</span><span class="badge badge-verified">On Track</span></li>
+          <li style="padding:0.6rem 0; display:flex; justify-content:space-between;"><span class="text-dim">Intended majors</span><strong>Kinesiology, Psychology</strong></li>
+        </ul>
+        <a class="btn btn-secondary btn-full mt-3" href="eligibility-tracker.html">Open eligibility tracker →</a>
+      </div>
+      <div class="card">
+        <h3 style="font-size:1.1rem; margin-bottom:1rem;">Honors &amp; Awards</h3>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border);"><strong>All-District First Team</strong><div class="text-dim" style="font-size:0.85rem;">2025, 2026</div></li>
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border);"><strong>Academic Honor Roll</strong><div class="text-dim" style="font-size:0.85rem;">9th, 10th, 11th grade</div></li>
+          <li style="padding:0.6rem 0; border-bottom:1px solid var(--border);"><strong>Team Captain</strong><div class="text-dim" style="font-size:0.85rem;">Lincoln HS Varsity, 2026–27</div></li>
+          <li style="padding:0.6rem 0;"><strong>National Honor Society</strong><div class="text-dim" style="font-size:0.85rem;">Inducted 2025</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- REFERENCES PANEL -->
+  <div data-panel="references" class="hidden">
+    <div class="grid grid-3" style="gap:1.25rem;">
+      <div class="card">
+        <div style="display:flex; gap:0.8rem; align-items:center; margin-bottom:1rem;">
+          <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,var(--green-500),var(--green-700)); display:grid; place-items:center; font-weight:700;">CW</div>
+          <div>
+            <div style="font-weight:600;">Coach Carla Williams</div>
+            <div class="text-dim" style="font-size:0.85rem;">Head Coach · Lincoln HS</div>
+          </div>
+        </div>
+        <p class="text-dim" style="font-size:0.92rem;">"Maya is the most coachable forward I've worked with in 12 years. She turns feedback into changed behavior in a single practice."</p>
+        <button class="btn btn-secondary btn-sm mt-3">Contact (verified)</button>
+      </div>
+      <div class="card">
+        <div style="display:flex; gap:0.8rem; align-items:center; margin-bottom:1rem;">
+          <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,var(--blue-500),#1B3756); display:grid; place-items:center; font-weight:700;">DM</div>
+          <div>
+            <div style="font-weight:600;">Coach Diego Martinez</div>
+            <div class="text-dim" style="font-size:0.85rem;">Club Director · Tampa Bay United</div>
+          </div>
+        </div>
+        <p class="text-dim" style="font-size:0.92rem;">"Elite finisher in the box. Plays with composure under pressure. Tracks back defensively without being asked."</p>
+        <button class="btn btn-secondary btn-sm mt-3">Contact (verified)</button>
+      </div>
+      <div class="card">
+        <div style="display:flex; gap:0.8rem; align-items:center; margin-bottom:1rem;">
+          <div style="width:48px; height:48px; border-radius:50%; background:linear-gradient(135deg,var(--purple-500),#4C2D8F); display:grid; place-items:center; font-weight:700;">JT</div>
+          <div>
+            <div style="font-weight:600;">Janelle Torres, M.Ed.</div>
+            <div class="text-dim" style="font-size:0.85rem;">Counselor · Lincoln HS</div>
+          </div>
+        </div>
+        <p class="text-dim" style="font-size:0.92rem;">"Excellent academic standing. NCAA core-course pace strong. Self-advocates with teachers and counselors consistently."</p>
+        <button class="btn btn-secondary btn-sm mt-3">Contact (verified)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT PANEL -->
+  <div data-panel="about" class="hidden">
+    <div class="grid grid-2" style="gap:1.5rem;">
+      <div class="card">
+        <h3 style="font-size:1.1rem; margin-bottom:1rem;">Personal Statement</h3>
+        <p class="text-dim" style="font-size:0.95rem;">"I started playing soccer at six and fell in love with the chess match of attacking play — reading defenders, creating space, finishing under pressure. I'm looking for a college program where I can keep developing as a forward, study kinesiology with the intent to go into sports medicine, and play a role on a team that values academics as much as it values winning."</p>
+        <p class="text-dim mt-3" style="font-size:0.95rem;">— Maya Rodriguez</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:1.1rem; margin-bottom:1rem;">College Preferences</h3>
+        <ul style="list-style:none; padding:0;">
+          <li style="padding:0.5rem 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between;"><span class="text-dim">Preferred division</span><strong>D-II / D-III / NAIA</strong></li>
+          <li style="padding:0.5rem 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between;"><span class="text-dim">Region</span><strong>West, Pacific NW</strong></li>
+          <li style="padding:0.5rem 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between;"><span class="text-dim">School size</span><strong>Mid-size · 2k–8k</strong></li>
+          <li style="padding:0.5rem 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between;"><span class="text-dim">Major</span><strong>Kinesiology / Psychology</strong></li>
+          <li style="padding:0.5rem 0; display:flex; justify-content:space-between;"><span class="text-dim">Distance from home</span><strong>Open</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card mt-4">
+      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Character &amp; Wellness</h3>
+      <div class="grid grid-4">
+        <div>
+          <div class="text-dim" style="font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;">Coachability</div>
+          <div style="font-size:1.6rem; font-weight:700; letter-spacing:-0.02em;">9.4<span style="font-size:0.95rem; color:var(--text-dim); font-weight:500;"> / 10</span></div>
+          <div class="text-dim" style="font-size:0.82rem;">Coach &amp; peer rated</div>
+        </div>
+        <div>
+          <div class="text-dim" style="font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;">Leadership</div>
+          <div style="font-size:1.6rem; font-weight:700; letter-spacing:-0.02em;">Captain</div>
+          <div class="text-dim" style="font-size:0.82rem;">Varsity 2026–27</div>
+        </div>
+        <div>
+          <div class="text-dim" style="font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;">Community service</div>
+          <div style="font-size:1.6rem; font-weight:700; letter-spacing:-0.02em;">68<span style="font-size:0.95rem; color:var(--text-dim); font-weight:500;"> hrs</span></div>
+          <div class="text-dim" style="font-size:0.82rem;">Verified</div>
+        </div>
+        <div>
+          <div class="text-dim" style="font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase;">Sportsmanship</div>
+          <div style="font-size:1.6rem; font-weight:700; letter-spacing:-0.02em;">Excellent</div>
+          <div class="text-dim" style="font-size:0.82rem;">Official-rated</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="app.js"></script>
+<script src="data-loader.js"></script>
+<nav class="bottom-nav"><div class="bottom-nav-inner"><a class="bottom-link" href="athlete-dashboard.html"><span class="ic">⌂</span><span>Home</span></a><a class="bottom-link" href="pipeline.html"><span class="ic">▦</span><span>Pipeline</span></a><a class="bottom-link" href="interview-practice.html"><span class="ic">🎙</span><span>Interview</span></a><a class="bottom-link" href="timeline.html"><span class="ic">🗺</span><span>Timeline</span></a><a class="bottom-link active" href="athlete-profile.html"><span class="ic">●</span><span>Profile</span></a></div></nav>
+</body>
+</html>

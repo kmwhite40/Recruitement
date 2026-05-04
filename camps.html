@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Camps & Showcases — ScholarPath Athletics</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+    <ul class="nav-links">
+      <li><a href="athlete-dashboard.html">Dashboard</a></li>
+      <li><a href="pipeline.html">Pipeline</a></li>
+      <li><a href="coach-directory.html">Coaches</a></li>
+      <li><a href="camps.html">Camps</a></li>
+      <li><a href="visits.html">Visits</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container" style="padding:2rem 1.5rem 4rem;">
+  <div class="app-topbar">
+    <div>
+      <h1>Camps &amp; Showcases</h1>
+      <p class="text-dim mt-1">Find verified events with confirmed college coach attendance. Filter by sport, type, region, and budget.</p>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="grid grid-4" style="gap:0.75rem; align-items:flex-end;">
+      <div>
+        <label class="text-dim" style="font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Sport</label>
+        <select id="sport" class="range-input" style="width:100%;">
+          <option value="soccer">Women's Soccer</option>
+          <option value="">All sports</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-dim" style="font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Event type</label>
+        <select id="type" class="range-input" style="width:100%;">
+          <option value="">All types</option>
+          <option value="id_camp">ID Camp</option>
+          <option value="showcase">Showcase</option>
+          <option value="combine">Combine</option>
+          <option value="tournament">Tournament</option>
+          <option value="clinic">Clinic</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-dim" style="font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Region</label>
+        <select id="region" class="range-input" style="width:100%;">
+          <option value="">All</option>
+          <option>West</option><option>Midwest</option><option>South</option><option>Northeast</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-dim" style="font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; display:block; margin-bottom:0.4rem;">Max cost</label>
+        <select id="max_cost" class="range-input" style="width:100%;">
+          <option value="">No limit</option>
+          <option value="150">$150</option>
+          <option value="250">$250</option>
+          <option value="350">$350</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div id="meta" class="text-dim mb-3" style="font-size:0.92rem;">Loading…</div>
+  <div id="results" class="grid" style="grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:1.25rem;"></div>
+</main>
+
+<script src="app.js"></script>
+<script>
+const $ = (id) => document.getElementById(id);
+
+const TYPE_LABELS = { id_camp: 'ID Camp', showcase: 'Showcase', combine: 'Combine', clinic: 'Clinic', tournament: 'Tournament' };
+const TYPE_COLORS = { id_camp: 'badge-verified', showcase: 'badge-blue', combine: 'badge-purple', clinic: 'badge-amber', tournament: '' };
+
+function fmtDate(s) {
+  if (!s) return '';
+  const d = new Date(s + 'T00:00:00');
+  return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+
+async function load() {
+  const params = new URLSearchParams();
+  ['sport','type','region','max_cost'].forEach(k => { const v = $(k).value; if (v) params.set(k, v); });
+  params.set('after', new Date().toISOString().slice(0, 10));
+  $('meta').textContent = 'Searching…';
+  try {
+    const r = await fetch('/api/camps?' + params.toString());
+    const data = await r.json();
+    $('meta').textContent = `${data.count} event${data.count === 1 ? '' : 's'} found`;
+    $('results').innerHTML = data.camps.map(c => `
+      <article class="card" style="display:flex; flex-direction:column; gap:0.75rem;">
+        <div class="flex-between">
+          <div>
+            <div style="font-weight:700; font-size:1.05rem;">${c.name}</div>
+            <div class="text-dim" style="font-size:0.85rem;">${c.organizer || ''}</div>
+          </div>
+          <span class="badge ${TYPE_COLORS[c.type] || ''}">${TYPE_LABELS[c.type] || c.type}</span>
+        </div>
+        <div style="display:grid; grid-template-columns:auto 1fr; gap:0.5rem 1rem; font-size:0.9rem;">
+          <span class="text-muted">When</span><span><strong>${fmtDate(c.start_date)}${c.end_date && c.end_date !== c.start_date ? ` – ${fmtDate(c.end_date)}` : ''}</strong></span>
+          <span class="text-muted">Where</span><span>${c.city}, ${c.state}</span>
+          ${c.divisions ? `<span class="text-muted">Divisions</span><span>${c.divisions}</span>` : ''}
+          ${c.grade_levels ? `<span class="text-muted">Grades</span><span>${c.grade_levels}</span>` : ''}
+          ${c.cost_usd != null ? `<span class="text-muted">Cost</span><span class="mono">$${c.cost_usd}</span>` : ''}
+          ${c.expected_coach_count ? `<span class="text-muted">Coaches</span><span><strong style="color:var(--green-500);">${c.expected_coach_count}+ expected</strong></span>` : ''}
+        </div>
+        ${c.notes ? `<div style="font-size:0.85rem; color:var(--text-dim); padding:0.75rem; background:var(--surface-2); border-radius:var(--radius);">${c.notes}</div>` : ''}
+        <div style="display:flex; gap:0.5rem; margin-top:auto;">
+          ${c.verified_results ? `<span class="badge badge-verified" style="font-size:0.7rem;"><span class="dot dot-green"></span> Verified results</span>` : ''}
+          <a href="${c.registration_url}" target="_blank" rel="noopener" class="btn btn-primary btn-sm" style="margin-left:auto;">Register →</a>
+        </div>
+      </article>
+    `).join('') || '<div class="card text-dim text-center">No upcoming events match your filters.</div>';
+  } catch (e) {
+    $('meta').textContent = 'Failed to load camps.';
+  }
+}
+
+['sport','type','region','max_cost'].forEach(k => $(k).addEventListener('change', load));
+load();
+</script>
+
+active<activenactiveaactivevactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activenactiveaactivevactive"active>active<activedactiveiactivevactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activenactiveaactivevactive-activeiactivenactivenactiveeactiveractive"active>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeDactiveAactiveSactiveHactive"active activehactiveractiveeactivefactive=active"activeaactivetactivehactivelactiveeactivetactiveeactive-activedactiveaactivesactivehactivebactiveoactiveaactiveractivedactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active⌂active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeHactiveoactivemactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activePactiveIactivePactiveEactive"active activehactiveractiveeactivefactive=active"activepactiveiactivepactiveeactivelactiveiactivenactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active▦active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activePactiveiactivepactiveeactivelactiveiactivenactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeIactiveNactiveTactive"active activehactiveractiveeactivefactive=active"activeiactivenactivetactiveeactiveractivevactiveiactiveeactivewactive-activepactiveractiveaactivecactivetactiveiactivecactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active🎙active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeIactivenactivetactiveeactiveractivevactiveiactiveeactivewactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activeTactiveIactiveMactiveEactive"active activehactiveractiveeactivefactive=active"activetactiveiactivemactiveeactivelactiveiactivenactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active🗺active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activeTactiveiactivemactiveeactivelactiveiactivenactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<activeaactive activecactivelactiveaactivesactivesactive=active"activebactiveoactivetactivetactiveoactivemactive-activelactiveiactivenactivekactive activeBactiveNactive_activePactiveRactiveOactiveFactive"active activehactiveractiveeactivefactive=active"activeaactivetactivehactivelactiveeactivetactiveeactive-activepactiveractiveoactivefactiveiactivelactiveeactive.activehactivetactivemactivelactive"active>active<activesactivepactiveaactivenactive activecactivelactiveaactivesactivesactive=active"activeiactivecactive"active>active●active<active/activesactivepactiveaactivenactive>active<activesactivepactiveaactivenactive>activePactiveractiveoactivefactiveiactivelactiveeactive<active/activesactivepactiveaactivenactive>active<active/activeaactive>active<active/activedactiveiactivevactive>active<active/activenactiveaactivevactive>
+</body>
+</html>

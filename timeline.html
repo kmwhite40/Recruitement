@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recruiting Timeline — ScholarPath Athletics</title>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1E7A4D" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .roadmap { position:relative; padding:2rem 0; }
+    .roadmap::before { content:''; position:absolute; left:18px; top:0; bottom:0; width:2px; background:linear-gradient(180deg, var(--green-500), var(--blue-500), var(--purple-500), var(--amber-500)); }
+    .grade-block { display:grid; grid-template-columns:40px 1fr; gap:1.5rem; margin-bottom:2rem; position:relative; }
+    .grade-dot { width:38px; height:38px; border-radius:50%; background:var(--navy-800); border:2px solid var(--green-500); display:grid; place-items:center; font-weight:700; color:var(--green-500); position:relative; z-index:1; }
+    .grade-block h2 { font-size:1.4rem; margin-bottom:0.5rem; }
+    .grade-block .subtitle { color:var(--text-dim); font-size:0.95rem; margin-bottom:1.25rem; }
+    .month-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:0.75rem; }
+    .month-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:1rem 1.1rem; }
+    .month-card h4 { font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--text-dim); margin-bottom:0.5rem; }
+    .month-card ul { list-style:none; padding:0; }
+    .month-card li { padding:0.4rem 0; font-size:0.88rem; color:var(--text-dim); display:flex; gap:0.5rem; align-items:flex-start; line-height:1.45; }
+    .month-card li::before { content:'○'; color:var(--text-muted); flex-shrink:0; }
+    .month-card li.done::before { content:'✓'; color:var(--green-500); }
+    .month-card li.now::before { content:'●'; color:var(--green-500); animation:pulse 2s ease infinite; }
+    .grade-block.current .grade-dot { background:var(--green-500); color:white; box-shadow:0 0 0 4px rgba(43,182,115,0.2); }
+    .grade-block.future .grade-dot { border-color:var(--text-muted); color:var(--text-muted); }
+    .grade-block.past .grade-dot { background:var(--surface-2); border-color:var(--border); color:var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">SP</span><span>ScholarPath</span></a>
+    <ul class="nav-links">
+      <li><a href="athlete-dashboard.html">Dashboard</a></li>
+      <li><a href="pipeline.html">Pipeline</a></li>
+      <li><a href="coach-directory.html">Coaches</a></li>
+      <li><a href="camps.html">Camps</a></li>
+      <li><a href="visits.html">Visits</a></li>
+      <li><a href="timeline.html">Timeline</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container" style="padding:2rem 1.5rem 4rem; max-width:1100px;">
+  <div class="app-topbar">
+    <div>
+      <span class="eyebrow">Class of 2027 · Roadmap</span>
+      <h1 style="margin-top:0.5rem;">Your recruiting timeline.</h1>
+      <p class="text-dim mt-2" style="max-width:62ch;">A grade-by-grade plan from freshman year through signing day. Tasks marked <strong style="color:var(--green-500);">●</strong> are due now; <strong style="color:var(--green-500);">✓</strong> are done; <strong style="color:var(--text-muted);">○</strong> are coming up.</p>
+    </div>
+    <button class="btn btn-secondary btn-sm">Print roadmap</button>
+  </div>
+
+  <div class="roadmap">
+
+    <!-- 9th Grade -->
+    <div class="grade-block past">
+      <div class="grade-dot">9</div>
+      <div>
+        <h2>Freshman: Foundation</h2>
+        <p class="subtitle">Set the academic and athletic foundation. Recruiting starts with eligibility, not exposure.</p>
+        <div class="month-grid">
+          <div class="month-card">
+            <h4>Fall</h4>
+            <ul>
+              <li class="done">Verify NCAA core-course list with counselor</li>
+              <li class="done">Set GPA target above division minimums</li>
+              <li class="done">Build ScholarPath profile (basic)</li>
+            </ul>
+          </div>
+          <div class="month-card">
+            <h4>Winter</h4>
+            <ul>
+              <li class="done">Capture first highlight clips</li>
+              <li class="done">Establish study habits and time blocking</li>
+            </ul>
+          </div>
+          <div class="month-card">
+            <h4>Spring + Summer</h4>
+            <ul>
+              <li class="done">Attend a regional skills clinic</li>
+              <li class="done">Lift program with school or club trainer</li>
+              <li class="done">Read 1 book on college recruiting (parent + athlete)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10th Grade -->
+    <div class="grade-block past">
+      <div class="grade-dot">10</div>
+      <div>
+        <h2>Sophomore: Development</h2>
+        <p class="subtitle">Build the athletic foundation, leadership, and exposure baseline. Many programs begin watching this year.</p>
+        <div class="month-grid">
+          <div class="month-card">
+            <h4>Fall</h4>
+            <ul>
+              <li class="done">Capture full-game film</li>
+              <li class="done">Take the leadership module on ScholarPath</li>
+              <li class="done">Identify 25 target schools across all divisions</li>
+            </ul>
+          </div>
+          <div class="month-card">
+            <h4>Winter</h4>
+            <ul>
+              <li class="done">Combine baseline (40, vert, agility)</li>
+              <li class="done">First highlight reel with AI auto-tagging</li>
+              <li class="done">Update ScholarPath profile to 80%+ complete</li>
+            </ul>
+          </div>
+          <div class="month-card">
+            <h4>Summer</h4>
+            <ul>
+              <li class="done">First ID camp at a target school</li>
+              <li class="done">Open NCAA Eligibility Center account</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11th Grade — CURRENT -->
+    <div class="grade-block current">
+      <div class="grade-dot">11</div>
+      <div>
+        <h2>Junior: Exposure</h2>
+        <p class="subtitle"><strong style="color:var(--green-500);">You are here.</strong> The most active recruiting year. Compete, communicate, and convert interest into evaluations.</p>
+        <div class="month-grid">
+          <div class="month-card">
+            <h4>Fall</h4>
+            <ul>
+              <li class="done">Strong junior season starts (game-day routines)</li>
+              <li class="done">Send introductory emails to 25 target schools</li>
+              <li class="done">Attend 1 verified showcase</li>
+            </ul>
+          </div>
+          <div class="month-card">
+            <h4>Winter</h4>
+            <ul>
+              <li class="now">Mid-year transcript to NCAA Eligibility Center</li>
+              <li class="now">Begin unofficial campus visits</li>
+              <li class="now">Refresh AI-edited highlight reel with playoff footage</li>
+            </ul>
+          </div>
+          <div class="month-card">
+            <h4>Spring</h4>
+            <ul>
+              <li>Take SAT/ACT (if test-required programs are on your list)</li>
+              <li>Confirm summer camp schedule (3–4 verified events)</li>
+              <li>Voice interview practice — 1 session per week</li>
+            </ul>
+          </div>
+          <div class="month-card">
+            <h4>Summer</h4>
+            <ul>
+              <li>Attend ID camps at top 5 fits</li>
+              <li>Verbal interest from coaches → unofficial visits</li>
+              <li>Update profile with verified camp results</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12th Grade -->
+    <div class="grade-block future">
+      <div class="grade-dot">12</div>
+      <div>
+        <h2>Senior: Decision &amp; Transition</h2>
+        <p class="subtitle">Compare offers honestly. Sign confidently. Prepare for college life.</p>
+        <div class="month-grid">
+          <div class="month-card">
+            <h4>Fall</h4>
+            <ul>
+              <li>Final transcript prep with counselor</li>
+              <li>5 official visits (D-I window opens Aug 1)</li>
+              <li>Submit FAFSA October 1</li>
+              <li>Apply to all schools on your list</li>
+            </ul>
+          </div>
+          <div class="month-card">
+            <h4>Winter</h4>
+            <ul>
+              <li>Compare offers — full vs partial, athletic + merit + need</li>
+              <li>Use ScholarPath offer comparison tool</li>
+              <li>Discuss with parents, counselor, and high school coach</li>
+            </ul>
+          </div>
+          <div class="month-card">
+            <h4>Spring</h4>
+            <ul>
+              <li>Sign National Letter of Intent</li>
+              <li>Signing day recognition at school</li>
+              <li>Final transcript to NCAA Eligibility Center</li>
+              <li>Connect with future teammate (alumni mentor on ScholarPath)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="text-muted text-center mt-4" style="font-size:0.85rem;">This roadmap calibrates to your sport, division target, and graduation year. Update your profile to refresh.</p>
+</main>
+
+<script src="app.js"></script>
+<nav class="bottom-nav"><div class="bottom-nav-inner"><a class="bottom-link" href="athlete-dashboard.html"><span class="ic">⌂</span><span>Home</span></a><a class="bottom-link" href="pipeline.html"><span class="ic">▦</span><span>Pipeline</span></a><a class="bottom-link" href="interview-practice.html"><span class="ic">🎙</span><span>Interview</span></a><a class="bottom-link active" href="timeline.html"><span class="ic">🗺</span><span>Timeline</span></a><a class="bottom-link" href="athlete-profile.html"><span class="ic">●</span><span>Profile</span></a></div></nav>
+</body>
+</html>
