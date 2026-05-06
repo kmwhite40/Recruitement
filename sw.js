@@ -1,5 +1,5 @@
 /* ScholarPath PWA service worker */
-const CACHE = 'scholarpath-v1';
+const CACHE = 'scholarpath-v2';
 const STATIC = [
   '/',
   '/index.html',
