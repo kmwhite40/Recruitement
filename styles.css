@@ -1121,6 +1121,26 @@ h4 { font-size: 1.1rem; letter-spacing: -0.01em; }
 }
 
 /* =============================================================
+   Mini footer (universal copyright)
+   ============================================================= */
+.mini-footer {
+  text-align: center;
+  padding: 2.5rem 1.5rem 2rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+  letter-spacing: 0.02em;
+}
+.mini-footer a {
+  color: var(--text-dim);
+  margin: 0 0.4rem;
+  transition: color var(--duration);
+}
+.mini-footer a:hover { color: var(--text); }
+.mini-footer .sep { color: var(--slate-700); }
+
+/* =============================================================
    Mobile bottom nav (PWA)
    ============================================================= */
 .bottom-nav {
